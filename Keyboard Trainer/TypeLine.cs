@@ -9,7 +9,8 @@ namespace Keyboard_Trainer
 {
     internal class TypeLine : Line
     {
-        public TextBox TypingTextBox { get; private set; }
+        private readonly TextBox TypingTextBox;
+
         private string TypingString
         {
             get => TypingTextBox.Text;
@@ -18,6 +19,7 @@ namespace Keyboard_Trainer
                 TypingTextBox.Text = value;
             }
         }
+
         public States State { get; private set; }
 
         public TypeLine(TextBox TypingTextBox, int MaxLength) : base(MaxLength)
@@ -35,11 +37,5 @@ namespace Keyboard_Trainer
         {
             TypingString = string.Empty;
         }
-
-        public void EraseTheLastWord()
-        {
-            //TypingString
-        }
-
     }
 }

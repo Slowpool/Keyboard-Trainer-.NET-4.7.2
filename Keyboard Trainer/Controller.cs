@@ -9,11 +9,16 @@ namespace Keyboard_Trainer
 {
     internal class Controller
     {
-        private TypeLine typeLine { get; set; }
-        private RequiredLine requiredLine { get; set; }
-        private KeyboardTrainer mainForm { get; set; }
+        private readonly TypeLine typeLine;
+
+        private readonly RequiredLine requiredLine;
+
+        private readonly KeyboardTrainer mainForm;
+
         private Text text { get; set; }
+
         private Color FormBackColor { get; set; }
+
         public Controller(RequiredLine requiredLine, TypeLine typeLine, KeyboardTrainer mainForm, Text text)
         {
             this.requiredLine = requiredLine;
@@ -128,7 +133,7 @@ namespace Keyboard_Trainer
             // Ctrl + Backspace
             else if (character == 127)
             {
-                EraseTheLastWord();
+
             }
 
             // Other characters.
@@ -142,13 +147,6 @@ namespace Keyboard_Trainer
             {
                 SetMistakeState();
             }
-        }
-
-        private void EraseTheLastWord()
-        {
-#warning not fully implemented
-            typeLine.EraseTheLastWord();
-            //requiredLine.MoveToLastSpace();
         }
     }
 }
