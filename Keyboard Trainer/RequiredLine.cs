@@ -9,6 +9,7 @@ namespace Keyboard_Trainer
 {
     internal class RequiredLine : Line
     {
+        private readonly Label DisplayLabel;
         // GODLIKE PROPERTY DEMONSTRATION
         public string RequiredString
         {
@@ -18,10 +19,11 @@ namespace Keyboard_Trainer
                 DisplayLabel.Text = value;
             }
         }
+
         public int LengthOfString => RequiredString.Length;
-        public readonly Label DisplayLabel;
 
         private int currentPosition = 0;
+
         private int CurrentPosition
         {
             get => currentPosition;
@@ -41,6 +43,7 @@ namespace Keyboard_Trainer
                 }
             }
         }
+
         public char ExpectedCharacter
         {
             get => RequiredString[CurrentPosition];
@@ -61,7 +64,7 @@ namespace Keyboard_Trainer
             CurrentPosition--;
         }
 
-        public void SetReuiredString(string RequiredString)
+        public void SetRequiredString(string RequiredString)
         {
             this.RequiredString = RequiredString;
         }

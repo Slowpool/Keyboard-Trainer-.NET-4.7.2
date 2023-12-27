@@ -21,7 +21,7 @@ namespace Keyboard_Trainer
             this.mainForm = mainForm;
             this.text = text;
 #warning delete it in further
-            requiredLine.SetReuiredString("hehe");
+            requiredLine.SetRequiredString("hehe");
         }
 
         public bool IsCorrectCharacter(char character)
@@ -53,7 +53,7 @@ namespace Keyboard_Trainer
         {
 #warning rework
             string nextLine = text.GetNextLine();
-            requiredLine.SetReuiredString(nextLine);
+            requiredLine.SetRequiredString(nextLine);
         }
 
         public void ChangeMode(Modes Mode)
