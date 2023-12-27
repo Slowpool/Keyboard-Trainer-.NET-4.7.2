@@ -19,7 +19,7 @@ namespace Keyboard_Trainer
             }
         }
         public int LengthOfString => RequiredString.Length;
-        public Label DisplayLabel { get; }
+        public readonly Label DisplayLabel;
 
         private int currentPosition = 0;
         private int CurrentPosition
