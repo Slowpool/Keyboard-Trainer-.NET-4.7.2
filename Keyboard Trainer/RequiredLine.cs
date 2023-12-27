@@ -1,0 +1,69 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Keyboard_Trainer
+{
+    internal class RequiredLine : Line
+    {
+        // GODLIKE PROPERTY DEMONSTRATION
+        public string RequiredString
+        {
+            get => DisplayLabel.Text;
+            set
+            {
+                DisplayLabel.Text = value;
+            }
+        }
+        public int LengthOfString => RequiredString.Length;
+        public Label DisplayLabel { get; }
+
+        private int currentPosition = 0;
+        private int CurrentPosition
+        {
+            get => currentPosition;
+            set
+            {
+                if (value < 0)
+                {
+                    currentPosition = 0;
+                }
+                else if (value > LengthOfString)
+                {
+                    currentPosition = LengthOfString;
+                }
+                else
+                {
+                    currentPosition = value;
+                }
+            }
+        }
+        public char ExpectedCharacter
+        {
+            get => RequiredString[CurrentPosition];
+        }
+
+        public RequiredLine(Label DisplayLabel, int MaxLength) : base(MaxLength)
+        {
+            this.DisplayLabel = DisplayLabel;
+        }
+
+        public void NextCharacter()
+        {
+            CurrentPosition++;
+        }
+
+        public void PrevCharacter()
+        {
+            CurrentPosition--;
+        }
+
+        public void SetReuiredString(string RequiredString)
+        {
+            this.RequiredString = RequiredString;
+        }
+    }
+}
