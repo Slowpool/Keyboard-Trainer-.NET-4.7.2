@@ -31,7 +31,9 @@
             this.TextBoxForTyping = new System.Windows.Forms.TextBox();
             this.LabelOfOutputRequiringLine = new System.Windows.Forms.Label();
             this.ModesComboBox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.ModeLabel = new System.Windows.Forms.Label();
+            this.LanguageComboBox = new System.Windows.Forms.ComboBox();
+            this.LanguageLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // TextBoxForTyping
@@ -75,15 +77,38 @@
             this.ModesComboBox.TabIndex = 2;
             this.ModesComboBox.SelectedIndexChanged += new System.EventHandler(this.ModesComboBox_SelectedIndexChanged);
             // 
-            // label1
+            // ModeLabel
             // 
-            this.label1.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(13, 214);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(201, 25);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Mode";
+            this.ModeLabel.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ModeLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.ModeLabel.Location = new System.Drawing.Point(16, 214);
+            this.ModeLabel.Name = "ModeLabel";
+            this.ModeLabel.Size = new System.Drawing.Size(201, 25);
+            this.ModeLabel.TabIndex = 3;
+            this.ModeLabel.Text = "Mode";
+            // 
+            // LanguageComboBox
+            // 
+            this.LanguageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LanguageComboBox.FormattingEnabled = true;
+            this.LanguageComboBox.Items.AddRange(new object[] {
+            "English",
+            "Russian"});
+            this.LanguageComboBox.Location = new System.Drawing.Point(17, 133);
+            this.LanguageComboBox.Name = "LanguageComboBox";
+            this.LanguageComboBox.Size = new System.Drawing.Size(210, 29);
+            this.LanguageComboBox.TabIndex = 4;
+            this.LanguageComboBox.SelectedIndexChanged += new System.EventHandler(this.LanguageComboBox_SelectedIndexChanged);
+            // 
+            // LanguageLabel
+            // 
+            this.LanguageLabel.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LanguageLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.LanguageLabel.Location = new System.Drawing.Point(16, 105);
+            this.LanguageLabel.Name = "LanguageLabel";
+            this.LanguageLabel.Size = new System.Drawing.Size(201, 25);
+            this.LanguageLabel.TabIndex = 5;
+            this.LanguageLabel.Text = "Language";
             // 
             // KeyboardTrainer
             // 
@@ -91,7 +116,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(846, 426);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LanguageLabel);
+            this.Controls.Add(this.LanguageComboBox);
+            this.Controls.Add(this.ModeLabel);
             this.Controls.Add(this.ModesComboBox);
             this.Controls.Add(this.LabelOfOutputRequiringLine);
             this.Controls.Add(this.TextBoxForTyping);
@@ -112,7 +139,9 @@
         private System.Windows.Forms.TextBox TextBoxForTyping;
         private System.Windows.Forms.Label LabelOfOutputRequiringLine;
         private System.Windows.Forms.ComboBox ModesComboBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ModeLabel;
+        private System.Windows.Forms.ComboBox LanguageComboBox;
+        private System.Windows.Forms.Label LanguageLabel;
     }
 }
 

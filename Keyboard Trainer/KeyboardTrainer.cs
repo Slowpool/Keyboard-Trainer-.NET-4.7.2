@@ -16,11 +16,11 @@ namespace Keyboard_Trainer
         private Controller controller;
         public readonly Color UsualBackColor = SystemColors.WindowFrame;
         public readonly Color MistakeBackColor = Color.Red;
-        private KeyboardDataBase dataBase;
+        private DataBase dataBase;
         private const int MaxLengthOfLine = 80;
         //private Modes mode;
         public Modes Mode
-        {
+        { 
             //get => mode;
             set
             {
@@ -29,22 +29,21 @@ namespace Keyboard_Trainer
                 controller.ChangeMode(value);
             }
         }
+        #warning it needs a redo
+        public Languages Language { get;
+            set; }
         public KeyboardTrainer()
         {
             InitializeComponent();
             InitializeObjects();
             InitializeMode();
+            InitializeLanguage();
         }
 
         private void InitializeObjects()
         {
             InitializeDataBase();
             InitializeControllerAndHisComponents();
-        }
-
-        private void InitializeMode()
-        {
-            ModesComboBox.SelectedIndex = 0;
         }
 
         private void InitializeDataBase()
@@ -55,15 +54,27 @@ namespace Keyboard_Trainer
                 "user=root;" +
                 "password=password;" +
                 "database=keyboardtrainer;";
-            dataBase = new KeyboardDataBase(connectionString);
+
+            dataBase = new DataBase(connectionString);
         }
 
         private void InitializeControllerAndHisComponents()
         {
+            #warning do requiredLine really need in max length of line?
             var requiredLine = new RequiredLine(LabelOfOutputRequiringLine, MaxLengthOfLine);
             var typeLine = new TypeLine(TextBoxForTyping, MaxLengthOfLine);
-            var text = new Text();
+            var text = new Text(dataBase, MaxLengthOfLine);
             controller = new Controller(requiredLine, typeLine, this, text);
+        }
+
+        private void InitializeMode()
+        {
+            ModesComboBox.SelectedIndex = 0;
+        }
+
+        private void InitializeLanguage()
+        {
+            LanguageComboBox.SelectedIndex = 0;
         }
 
         private void TextBoxForTyping_KeyPress(object sender, KeyPressEventArgs e)
@@ -74,6 +85,11 @@ namespace Keyboard_Trainer
         private void ModesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Mode = (Modes)ModesComboBox.SelectedIndex;
+        }
+
+        private void LanguageComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Language = (Languages)LanguageComboBox.SelectedIndex;
         }
     }
 }

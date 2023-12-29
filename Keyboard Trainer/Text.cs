@@ -19,11 +19,11 @@ namespace Keyboard_Trainer
 
         private string FullText { get; set; }
 
-        private KeyboardDataBase dataBase { get; };
+        private readonly DataBase dataBase;
 
         private readonly int MaxLengthOfLine;
 
-        public Text(KeyboardDataBase dataBase, int MaxLengthOfLine)
+        public Text(DataBase dataBase, int MaxLengthOfLine)
         {
             this.dataBase = dataBase;
             this.MaxLengthOfLine = MaxLengthOfLine;

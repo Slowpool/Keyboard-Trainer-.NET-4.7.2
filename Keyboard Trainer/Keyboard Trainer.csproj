@@ -73,14 +73,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller.cs" />
-    <Compile Include="KeyboardDataBase.cs" />
+    <Compile Include="DataBase.cs" />
     <Compile Include="KeyboardTrainer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="KeyboardTrainer.Designer.cs">
       <DependentUpon>KeyboardTrainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Languages.cs" />
     <Compile Include="Line.cs" />
+    <Compile Include="MethodExtensions.cs" />
     <Compile Include="Modes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

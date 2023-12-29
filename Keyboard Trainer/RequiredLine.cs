@@ -7,6 +7,8 @@ using System.Windows.Forms;
 
 namespace Keyboard_Trainer
 {
+    #warning this class must have ctrl+backspace method and some classes must have similar.
+
     internal class RequiredLine : Line
     {
         private readonly Label DisplayLabel;

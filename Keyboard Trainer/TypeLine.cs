@@ -21,7 +21,7 @@ namespace Keyboard_Trainer
         }
 
         public States State { get; private set; }
-
+        
         public TypeLine(TextBox TypingTextBox, int MaxLength) : base(MaxLength)
         {
             this.TypingTextBox = TypingTextBox;
