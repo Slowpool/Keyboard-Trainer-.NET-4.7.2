@@ -105,6 +105,5 @@ namespace Keyboard_Trainer
             }
             return row;
         }
-
     }
 }

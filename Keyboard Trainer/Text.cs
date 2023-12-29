@@ -9,19 +9,24 @@ namespace Keyboard_Trainer
 {
     internal class Text
     {
-        private IEnumerable<string> Lines
-        {
-            get
-            {
-                yield return "some";
-            }
-        }
 
         private string FullText { get; set; }
 
         private readonly DataBase dataBase;
 
         private readonly int MaxLengthOfLine;
+
+        private IEnumerable<string> Lines
+        {
+            get
+            {
+                while (true)
+                {
+                    BuildLine();
+                    yield return "some";
+                }
+            }
+        }
 
         public Text(DataBase dataBase, int MaxLengthOfLine)
         {
@@ -31,11 +36,11 @@ namespace Keyboard_Trainer
 
         public string GetNextLine()
         {
-            #warning stub
             foreach(string line in Lines)
             {
                 return line;
             }
+            // unreachable code as i think
             throw new Exception("lines ended");
         }
     }
