@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Keyboard_Trainer
 {
-    internal class Text
+    public class Text
     {
 
         private string FullText { get; set; }
@@ -22,7 +22,7 @@ namespace Keyboard_Trainer
             {
                 while (true)
                 {
-                    BuildLine();
+                    //BuildLine();
                     yield return "some";
                 }
             }
@@ -34,6 +34,7 @@ namespace Keyboard_Trainer
             this.MaxLengthOfLine = MaxLengthOfLine;
         }
 
+#warning should rename it
         public string GetNextLine()
         {
             foreach(string line in Lines)

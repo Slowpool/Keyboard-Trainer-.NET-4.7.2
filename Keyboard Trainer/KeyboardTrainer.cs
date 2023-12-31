@@ -29,9 +29,17 @@ namespace Keyboard_Trainer
                 controller.ChangeMode(value);
             }
         }
+
         #warning it needs a redo
-        public Languages Language { get;
-            set; }
+        public Languages Language
+        {
+            set
+            {
+                controller.ClearTypeLine();
+                controller.ChangeLanguage(value);
+            }
+        }
+
         public KeyboardTrainer()
         {
             InitializeComponent();
@@ -64,7 +72,8 @@ namespace Keyboard_Trainer
             var requiredLine = new RequiredLine(LabelOfOutputRequiringLine, MaxLengthOfLine);
             var typeLine = new TypeLine(TextBoxForTyping, MaxLengthOfLine);
             var text = new Text(dataBase, MaxLengthOfLine);
-            controller = new Controller(requiredLine, typeLine, this, text);
+            var lineBuilder = new LineBuilder(dataBase, text, MaxLengthOfLine);
+            controller = new Controller(requiredLine, typeLine, this, lineBuilder);
         }
 
         private void InitializeMode()
@@ -90,6 +99,12 @@ namespace Keyboard_Trainer
         private void LanguageComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Language = (Languages)LanguageComboBox.SelectedIndex;
+        }
+
+#warning debug event
+        private void DebugButton_Click(object sender, EventArgs e)
+        {
+            controller.DisplayNextLine();
         }
     }
 }

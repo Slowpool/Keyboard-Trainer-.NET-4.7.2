@@ -22,7 +22,7 @@ namespace Keyboard_Trainer
             }
         }
 
-        public int LengthOfString => RequiredString.Length;
+        private int LengthOfString => RequiredString.Length;
 
         private int currentPosition = 0;
 
@@ -33,11 +33,11 @@ namespace Keyboard_Trainer
             {
                 if (value < 0)
                 {
-                    currentPosition = 0;
+                    return;
                 }
-                else if (value > LengthOfString)
+                else if (value == LengthOfString)
                 {
-                    currentPosition = LengthOfString;
+                    return;
                 }
                 else
                 {
@@ -66,7 +66,7 @@ namespace Keyboard_Trainer
             CurrentPosition--;
         }
 
-        public void SetRequiredString(string RequiredString)
+        public void SetNextRequiredLine(string RequiredString)
         {
             this.RequiredString = RequiredString;
         }

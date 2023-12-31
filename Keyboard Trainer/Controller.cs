@@ -15,18 +15,18 @@ namespace Keyboard_Trainer
 
         private readonly KeyboardTrainer mainForm;
 
-        private Text text { get; set; }
+        private readonly LineBuilder lineBuilder;
 
         private Color FormBackColor { get; set; }
 
-        public Controller(RequiredLine requiredLine, TypeLine typeLine, KeyboardTrainer mainForm, Text text)
+        public Controller(RequiredLine requiredLine, TypeLine typeLine, KeyboardTrainer mainForm, LineBuilder lineBuilder)
         {
             this.requiredLine = requiredLine;
             this.typeLine = typeLine;
             this.mainForm = mainForm;
-            this.text = text;
+            this.lineBuilder = lineBuilder;
 #warning delete it in further
-            requiredLine.SetRequiredString("hehe");
+            requiredLine.SetNextRequiredLine("hehe");
         }
 
         public bool IsCorrectCharacter(char character)
@@ -56,66 +56,14 @@ namespace Keyboard_Trainer
 
         public void DisplayNextLine()
         {
-#warning rework
-            string nextLine = text.GetNextLine();
-            requiredLine.SetRequiredString(nextLine);
+            #warning rework
+            string nextLine = lineBuilder.GetNextLine();
+            requiredLine.SetNextRequiredLine(nextLine);
         }
 
         public void ChangeMode(Modes Mode)
         {
-            switch(Mode)
-            {
-                case Modes.RepetitiveWord:
-                    RepetitiveWordMode();
-                    return;
-                case Modes.SetOfWords:
-                    SetOfWordsMode();
-                    return;
-                case Modes.OneWordThreeTimes:
-                    OneWordThreeTimesMode();
-                    return;
-                case Modes.Text:
-                    TextMode();
-                    return;
-                case Modes.OwnText:
-                    OwnTextMode();
-                    return;
-                case Modes.Digits:
-                    DigitsMode();
-                    return;
-            }
-        }
-
-        private void RepetitiveWordMode()
-        {
-#warning stub
-            DisplayNextLine();
-        }
-
-        private void SetOfWordsMode()
-        {
-#warning stub
-            DisplayNextLine();
-        }
-
-        private void OneWordThreeTimesMode()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void TextMode()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void OwnTextMode()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void DigitsMode()
-        {
-            throw new NotImplementedException();
+            lineBuilder.ChangeMode(Mode);
         }
 
         public void ClearTypeLine()
@@ -147,6 +95,11 @@ namespace Keyboard_Trainer
             {
                 SetMistakeState();
             }
+        }
+
+        public void ChangeLanguage(Languages Language)
+        {
+            lineBuilder.ChangeLanguage(Language);
         }
     }
 }

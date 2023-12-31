@@ -2,22 +2,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Keyboard_Trainer
 {
-    internal class DataBase
+    public class DataBase
     {
-        private MySqlConnection connection;
-        private MySqlCommand Command;
-        private Random rnd;
-        
-        private Dictionary<Languages, int> wordsAmount;
-        private Dictionary<Languages, int> textsAmount;
-        private Dictionary<string, Dictionary<Languages, int>> KindsOfData;
+#warning all properties opened for tests
+        public MySqlConnection connection;
+        public MySqlCommand Command;
+        public Random rnd;
+        public Dictionary<Languages, int> WordsAmount;
+        public Dictionary<Languages, int> TextsAmount;
+        public Dictionary<string, Dictionary<Languages, int>> KindsOfData;
 
         const string CountRowsCommandPattern = "SELECT COUNT(*) FROM {0}_{1};";
         const string RandomRowCommandPattern = "SELECT {0} FROM {1}_{0} WHERE id = {2};";
@@ -32,13 +29,25 @@ namespace Keyboard_Trainer
         private void InitializeObjects()
         {
             rnd = new Random();
-            wordsAmount = new Dictionary<Languages, int>();
-            textsAmount = new Dictionary<Languages, int>();
+            WordsAmount = new Dictionary<Languages, int>();
+            TextsAmount = new Dictionary<Languages, int>();
             KindsOfData = new Dictionary<string, Dictionary<Languages, int>>
             {
-                { "word", wordsAmount },
-                { "text", textsAmount },
+                { "word", WordsAmount },
+                { "text", TextsAmount },
             };
+            FillLanguages();
+        }
+
+        private void FillLanguages()
+        {
+            foreach(Languages language in Enum.GetValues(typeof(Languages)))
+            {
+                foreach(var kindOfData in KindsOfData.Values)
+                {
+                    kindOfData[language] = 0;
+                }
+            }
         }
 
         private void CountWordsAndTexts()
@@ -49,9 +58,9 @@ namespace Keyboard_Trainer
             }
         }
 
-        private void CountRows(string kindOfData, Dictionary<Languages, int> dict)
+        private void CountRows(string kindOfData, Dictionary<Languages,int> dict)
         {
-            foreach (var language in dict.Keys)
+            foreach (var language in dict.Keys.ToList())
             {
                 dict[language] = GetRowsAmount(kindOfData, language);
             }
@@ -68,7 +77,7 @@ namespace Keyboard_Trainer
             }
             catch
             {
-                MessageBox.Show("Failed to count rows amount in db", "The command wasn't executed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Failed to count rows amount in db", "The command wasn't executed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return rowsAmount;
         }
@@ -101,7 +110,7 @@ namespace Keyboard_Trainer
             }
             catch
             {
-                MessageBox.Show("Failed to extracting random word from db", "The command wasn't executed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Failed to extracting random word from db", "The command wasn't executed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return row;
         }

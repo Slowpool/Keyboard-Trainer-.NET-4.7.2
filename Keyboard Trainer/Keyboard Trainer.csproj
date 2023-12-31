@@ -82,6 +82,7 @@
     </Compile>
     <Compile Include="Languages.cs" />
     <Compile Include="Line.cs" />
+    <Compile Include="LineBuilder.cs" />
     <Compile Include="MethodExtensions.cs" />
     <Compile Include="Modes.cs" />
     <Compile Include="Program.cs" />
