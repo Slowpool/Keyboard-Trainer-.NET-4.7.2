@@ -44,10 +44,10 @@ namespace Keyboard_Trainer
                 case Modes.RepetitiveWord:
                     BuildRepetitiveWord();
                     break;
+#warning need in rework
                 case Modes.SetOfWords:
                     BuildSetOfWords();
                     break;
-#warning need in rework
                 case Modes.OneWordThreeTimes:
                     OneWordThreeTimesMode();
                     break;
@@ -73,13 +73,13 @@ namespace Keyboard_Trainer
             {
                 line.Append(word);
             }
-            line.Remove(line.Length, 1);
+            line.Remove(line.Length - 1, 1);
             BuiltLine = line.ToString();
         }
 
         private void BuildSetOfWords()
         {
-            
+            throw new NotImplementedException();
         }
 
         private void OneWordThreeTimesMode()

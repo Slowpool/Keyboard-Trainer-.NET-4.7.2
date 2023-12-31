@@ -9,7 +9,6 @@ namespace Keyboard_Trainer
 {
     public class Text
     {
-
         private string FullText { get; set; }
 
         private readonly DataBase dataBase;

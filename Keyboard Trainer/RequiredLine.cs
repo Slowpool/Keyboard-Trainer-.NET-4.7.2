@@ -70,5 +70,10 @@ namespace Keyboard_Trainer
         {
             this.RequiredString = RequiredString;
         }
+
+        public void PrevWord()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

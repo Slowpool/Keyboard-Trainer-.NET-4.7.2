@@ -17,7 +17,14 @@ namespace Keyboard_Trainer
 
         private readonly LineBuilder lineBuilder;
 
-        private Color FormBackColor { get; set; }
+        private Color FormBackColor
+        {
+            get => mainForm.BackColor;
+            set
+            {
+                mainForm.BackColor = value;
+            }
+        }
 
         public Controller(RequiredLine requiredLine, TypeLine typeLine, KeyboardTrainer mainForm, LineBuilder lineBuilder)
         {
@@ -25,45 +32,30 @@ namespace Keyboard_Trainer
             this.typeLine = typeLine;
             this.mainForm = mainForm;
             this.lineBuilder = lineBuilder;
-#warning delete it in further
-            requiredLine.SetNextRequiredLine("hehe");
-        }
-
-        public bool IsCorrectCharacter(char character)
-        {
-            return character == requiredLine.ExpectedCharacter;
-        }
-
-        public void SetMistakeState()
-        {
-            mainForm.BackColor = mainForm.MistakeBackColor;
-        }
-
-        public void SetUsualState()
-        {
-            mainForm.BackColor = mainForm.UsualBackColor;
-        }
-
-        public void NextCharacter()
-        {
-            requiredLine.NextCharacter();
-        }
-
-        public void PrevCharacter()
-        {
-            requiredLine.PrevCharacter();
-        }
-
-        public void DisplayNextLine()
-        {
-            #warning rework
-            string nextLine = lineBuilder.GetNextLine();
-            requiredLine.SetNextRequiredLine(nextLine);
         }
 
         public void ChangeMode(Modes Mode)
         {
             lineBuilder.ChangeMode(Mode);
+            RefreshLines();
+        }
+
+        public void ChangeLanguage(Languages Language)
+        {
+            lineBuilder.ChangeLanguage(Language);
+            RefreshLines();
+        }
+
+        private void RefreshLines()
+        {
+            ClearTypeLine();
+            DisplayNextLine();
+        }
+
+        public void DisplayNextLine()
+        {
+            string nextLine = lineBuilder.GetNextLine();
+            requiredLine.SetNextRequiredLine(nextLine);
         }
 
         public void ClearTypeLine()
@@ -73,22 +65,20 @@ namespace Keyboard_Trainer
 
         public void HandleCharacter(char character)
         {
-            // BackSpace.
-            if (character == 8)
+            if (IsBackspace(character))
             {
-                PrevCharacter();
+                requiredLine.PrevCharacter();
             }
-            // Ctrl + Backspace
-            else if (character == 127)
+            else if (IsCtrlBackspace(character))
             {
-
+                requiredLine.PrevWord();
             }
 
             // Other characters.
             else if (IsCorrectCharacter(character))
             {
 #warning need in rework
-                NextCharacter();
+                requiredLine.NextCharacter();
                 SetUsualState();
             }
             else
@@ -97,9 +87,29 @@ namespace Keyboard_Trainer
             }
         }
 
-        public void ChangeLanguage(Languages Language)
+        private bool IsBackspace(char character)
         {
-            lineBuilder.ChangeLanguage(Language);
+            return character == 8;
+        }
+
+        private bool IsCtrlBackspace(char character)
+        {
+            return character == 127;
+        }
+
+        private bool IsCorrectCharacter(char character)
+        {
+            return character == requiredLine.ExpectedCharacter;
+        }
+
+        private void SetUsualState()
+        {
+            mainForm.BackColor = mainForm.UsualBackColor;
+        }
+
+        public void SetMistakeState()
+        {
+            mainForm.BackColor = mainForm.MistakeBackColor;
         }
     }
 }

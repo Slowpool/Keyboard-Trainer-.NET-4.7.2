@@ -73,11 +73,16 @@ namespace Keyboard_Trainer
             int rowsAmount = 0;
             try
             {
-                rowsAmount = (int)Command.ExecuteScalar();
+                connection.Open();
+                rowsAmount = Convert.ToInt32(Command.ExecuteScalar());
             }
             catch
             {
                 //MessageBox.Show("Failed to count rows amount in db", "The command wasn't executed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Close();
             }
             return rowsAmount;
         }
@@ -98,7 +103,7 @@ namespace Keyboard_Trainer
             int numberOfRandomWord = rnd.Next(rowsAmount) + 1;
             string commandString = string.Format(
                 RandomRowCommandPattern,
-                numberOfRandomWord,
+                kindOfData,
                 language,
                 numberOfRandomWord);
             Command = new MySqlCommand(commandString, connection);
@@ -106,11 +111,16 @@ namespace Keyboard_Trainer
             string row = string.Empty;
             try
             {
-                row = (string)Command.ExecuteScalar();
+                connection.Open();
+                row = Convert.ToString(Command.ExecuteScalar());
             }
             catch
             {
                 //MessageBox.Show("Failed to extracting random word from db", "The command wasn't executed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Close();
             }
             return row;
         }

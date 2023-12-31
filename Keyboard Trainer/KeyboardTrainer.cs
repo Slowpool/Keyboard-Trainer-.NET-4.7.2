@@ -18,24 +18,19 @@ namespace Keyboard_Trainer
         public readonly Color MistakeBackColor = Color.Red;
         private DataBase dataBase;
         private const int MaxLengthOfLine = 80;
-        //private Modes mode;
+
         public Modes Mode
         { 
-            //get => mode;
             set
             {
-                //mode = value;
-                controller.ClearTypeLine();
                 controller.ChangeMode(value);
             }
         }
 
-        #warning it needs a redo
         public Languages Language
         {
             set
             {
-                controller.ClearTypeLine();
                 controller.ChangeLanguage(value);
             }
         }
@@ -88,6 +83,7 @@ namespace Keyboard_Trainer
 
         private void TextBoxForTyping_KeyPress(object sender, KeyPressEventArgs e)
         {
+#error HOW SHOULD I HANDLE THE CHARACTERS???
             controller.HandleCharacter(e.KeyChar);
         }
 
