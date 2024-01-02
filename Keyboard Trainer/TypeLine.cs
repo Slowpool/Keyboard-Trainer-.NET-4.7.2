@@ -29,7 +29,7 @@ namespace Keyboard_Trainer
             this.TypingTextBox = TypingTextBox;
             CharactersAmount = 0;
 
-            #warning i think that property useless (MaxLength)
+            #warning i think that this property useless (MaxLength)
             //SetMaxLengthForTextBox();
         }
 

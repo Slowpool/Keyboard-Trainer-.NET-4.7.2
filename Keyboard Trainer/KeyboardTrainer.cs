@@ -14,8 +14,7 @@ namespace Keyboard_Trainer
     public partial class KeyboardTrainer : Form
     {
         private Controller controller;
-        public readonly Color UsualBackColor = SystemColors.WindowFrame;
-        public readonly Color MistakeBackColor = Color.Red;
+        
         private DataBase dataBase;
         private const int MaxLengthOfLine = 80;
 

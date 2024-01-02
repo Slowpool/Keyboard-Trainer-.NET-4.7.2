@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Keyboard_Trainer
@@ -17,6 +18,15 @@ namespace Keyboard_Trainer
             set
             {
                 DisplayLabel.Text = value;
+            }
+        }
+
+        public Color ForeColor
+        {
+            get => DisplayLabel.ForeColor;
+            set
+            {
+                DisplayLabel.ForeColor = value;
             }
         }
 
@@ -36,7 +46,6 @@ namespace Keyboard_Trainer
 
         public bool IsCorrectSubstring(string substring)
         {
-            //int substringLength = substring.Length;
             return RequiredString.StartsWith(substring);
         }
 

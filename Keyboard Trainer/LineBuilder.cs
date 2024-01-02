@@ -10,6 +10,7 @@ namespace Keyboard_Trainer
     {
 #warning should i initialize these properties or not?
         private Modes Mode { get; set; }
+
         private Languages Language { get; set; }
 
         private DataBase dataBase { get; set; }
@@ -19,6 +20,8 @@ namespace Keyboard_Trainer
         private readonly int MaxLengthOfLine;
 
         private Text text { get; set; }
+
+        private StringBuilder line { get; set; }
 
         public LineBuilder(DataBase dataBase, Text text, int MaxLengthOfLine)
         {
@@ -68,7 +71,7 @@ namespace Keyboard_Trainer
         {
             string word = dataBase.GetRandomWord(Language) + " ";
             int wordsAmount = MaxLengthOfLine / word.Length;
-            StringBuilder line = new StringBuilder(word, MaxLengthOfLine);
+            line = new StringBuilder(word, MaxLengthOfLine);
             for(int i = 1; i < wordsAmount; i++)
             {
                 line.Append(word);
@@ -78,7 +81,21 @@ namespace Keyboard_Trainer
 
         private void BuildSetOfWords()
         {
-            throw new NotImplementedException();
+            string word = dataBase.GetRandomWord(Language) + " ";
+            line = new StringBuilder(word, MaxLengthOfLine);
+            while(true)
+            {
+                word = dataBase.GetRandomWord(Language) + " ";
+                if ((line.ToString() + word).Length > MaxLengthOfLine)
+                {
+                    break;
+                }
+                else
+                {
+                    line.Append(word);
+                }
+            }
+            BuiltLine = line.ToString();
         }
 
         private void OneWordThreeTimesMode()

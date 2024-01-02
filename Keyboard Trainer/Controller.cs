@@ -17,14 +17,8 @@ namespace Keyboard_Trainer
 
         private readonly LineBuilder lineBuilder;
 
-        private Color FormBackColor
-        {
-            get => mainForm.BackColor;
-            set
-            {
-                mainForm.BackColor = value;
-            }
-        }
+        public readonly Color UsualColor = Color.FromArgb(255, 255, 255); // white
+        public readonly Color MistakeColor = Color.FromArgb(255, 255, 0); // yellow
 
         public Controller(RequiredLine requiredLine, TypeLine typeLine, KeyboardTrainer mainForm, LineBuilder lineBuilder)
         {
@@ -92,7 +86,7 @@ namespace Keyboard_Trainer
 
         private void SetUsualState()
         {
-            mainForm.BackColor = mainForm.UsualBackColor;
+            requiredLine.ForeColor = UsualColor;
         }
 
         private bool IsFinalLine(string @string)
@@ -102,7 +96,7 @@ namespace Keyboard_Trainer
 
         public void SetMistakeState()
         {
-            mainForm.BackColor = mainForm.MistakeBackColor;
+            requiredLine.ForeColor = MistakeColor;
         }
     }
 }
