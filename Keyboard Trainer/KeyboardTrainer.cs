@@ -81,9 +81,9 @@ namespace Keyboard_Trainer
             LanguageComboBox.SelectedIndex = 0;
         }
 
-        private void TextBoxForTyping_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBoxForTyping_TextChanged(object sender, EventArgs e)
         {
-            controller.HandleCharacter(e.KeyChar);
+            controller.HandleEditedTypingLine();
         }
 
         private void ModesComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,5 +101,6 @@ namespace Keyboard_Trainer
         {
             controller.DisplayNextLine();
         }
+
     }
 }

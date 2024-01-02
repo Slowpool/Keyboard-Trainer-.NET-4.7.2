@@ -63,12 +63,12 @@ namespace Keyboard_Trainer
             typeLine.Clear();
         }
 
-        public void HandleCharacter(char character)
+        public void HandleEditedTypingLine()
         {
-            string currentString = typeLine.TypingString + character;
-            if (requiredLine.IsCorrectSubstring(currentString))
+            string @string = typeLine.TypingString;
+            if (IsCorrectSubstring(@string))
             {
-                SetUsualState();
+                HandleCorrectString(@string);
             }
             else
             {
@@ -76,9 +76,28 @@ namespace Keyboard_Trainer
             }
         }
 
+        private bool IsCorrectSubstring(string @string)
+        {
+            return requiredLine.IsCorrectSubstring(@string);
+        }
+
+        private void HandleCorrectString(string @string)
+        {
+            SetUsualState();
+            if (IsFinalLine(@string))
+            {
+                RefreshLines();
+            }
+        }
+
         private void SetUsualState()
         {
             mainForm.BackColor = mainForm.UsualBackColor;
+        }
+
+        private bool IsFinalLine(string @string)
+        {
+            return requiredLine.IsFinalLine(@string);
         }
 
         public void SetMistakeState()

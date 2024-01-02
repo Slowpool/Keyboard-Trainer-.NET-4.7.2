@@ -39,5 +39,11 @@ namespace Keyboard_Trainer
             //int substringLength = substring.Length;
             return RequiredString.StartsWith(substring);
         }
+
+        public bool IsFinalLine(string @string)
+        {
+            bool LengthsAreSame = @string.Length == RequiredString.Length;
+            return LengthsAreSame;
+        }
     }
 }

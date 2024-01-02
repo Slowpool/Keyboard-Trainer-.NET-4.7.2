@@ -67,13 +67,12 @@ namespace Keyboard_Trainer
         private void BuildRepetitiveWord()
         {
             string word = dataBase.GetRandomWord(Language) + " ";
-            int wordsAmount = (MaxLengthOfLine + 1) / (word.Length);
-            StringBuilder line = new StringBuilder(word, MaxLengthOfLine + 1);
+            int wordsAmount = MaxLengthOfLine / word.Length;
+            StringBuilder line = new StringBuilder(word, MaxLengthOfLine);
             for(int i = 1; i < wordsAmount; i++)
             {
                 line.Append(word);
             }
-            line.Remove(line.Length - 1, 1);
             BuiltLine = line.ToString();
         }
 

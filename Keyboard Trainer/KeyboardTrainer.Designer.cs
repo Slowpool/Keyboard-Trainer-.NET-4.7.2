@@ -47,7 +47,7 @@
             this.TextBoxForTyping.Name = "TextBoxForTyping";
             this.TextBoxForTyping.Size = new System.Drawing.Size(818, 30);
             this.TextBoxForTyping.TabIndex = 0;
-            this.TextBoxForTyping.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxForTyping_KeyPress);
+            this.TextBoxForTyping.TextChanged += new System.EventHandler(this.TextBoxForTyping_TextChanged);
             // 
             // LabelOfOutputRequiringLine
             // 

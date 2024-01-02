@@ -30,13 +30,13 @@ namespace Keyboard_Trainer
             CharactersAmount = 0;
 
             #warning i think that property useless (MaxLength)
-            SetMaxLengthForTextBox();
+            //SetMaxLengthForTextBox();
         }
 
-        private void SetMaxLengthForTextBox()
-        {
-            TypingTextBox.MaxLength = MaxLength; 
-        }
+        //private void SetMaxLengthForTextBox()
+        //{
+        //    TypingTextBox.MaxLength = MaxLength; 
+        //}
 
         public void Clear()
         {
