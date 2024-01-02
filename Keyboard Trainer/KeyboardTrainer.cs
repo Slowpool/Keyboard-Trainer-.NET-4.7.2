@@ -83,7 +83,6 @@ namespace Keyboard_Trainer
 
         private void TextBoxForTyping_KeyPress(object sender, KeyPressEventArgs e)
         {
-#error HOW SHOULD I HANDLE THE CHARACTERS???
             controller.HandleCharacter(e.KeyChar);
         }
 

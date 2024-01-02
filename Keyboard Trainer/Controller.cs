@@ -65,41 +65,15 @@ namespace Keyboard_Trainer
 
         public void HandleCharacter(char character)
         {
-            if (IsBackspace(character))
+            string currentString = typeLine.TypingString + character;
+            if (requiredLine.IsCorrectSubstring(currentString))
             {
-                requiredLine.PrevCharacter();
-            }
-            else if (IsCtrlBackspace(character))
-            {
-                requiredLine.PrevWord();
-            }
-
-            // Other characters.
-            else if (IsCorrectCharacter(character))
-            {
-#warning need in rework
-                requiredLine.NextCharacter();
                 SetUsualState();
             }
             else
             {
                 SetMistakeState();
             }
-        }
-
-        private bool IsBackspace(char character)
-        {
-            return character == 8;
-        }
-
-        private bool IsCtrlBackspace(char character)
-        {
-            return character == 127;
-        }
-
-        private bool IsCorrectCharacter(char character)
-        {
-            return character == requiredLine.ExpectedCharacter;
         }
 
         private void SetUsualState()

@@ -11,7 +11,7 @@ namespace Keyboard_Trainer
     {
         private readonly TextBox TypingTextBox;
 
-        private string TypingString
+        public string TypingString
         {
             get => TypingTextBox.Text;
             set
@@ -20,11 +20,16 @@ namespace Keyboard_Trainer
             }
         }
 
-        public States State { get; private set; }
+        public int CharactersAmount { get; private set; }
+
+        public TypingStates TypingState { get; private set; }
         
         public TypeLine(TextBox TypingTextBox, int MaxLength) : base(MaxLength)
         {
             this.TypingTextBox = TypingTextBox;
+            CharactersAmount = 0;
+
+            #warning i think that property useless (MaxLength)
             SetMaxLengthForTextBox();
         }
 

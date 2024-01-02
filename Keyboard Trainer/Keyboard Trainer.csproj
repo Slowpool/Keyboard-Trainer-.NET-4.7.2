@@ -88,7 +88,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequiredLine.cs" />
-    <Compile Include="States.cs" />
+    <Compile Include="TypingStates.cs" />
     <Compile Include="Text.cs" />
     <Compile Include="TypeLine.cs" />
     <EmbeddedResource Include="KeyboardTrainer.resx">

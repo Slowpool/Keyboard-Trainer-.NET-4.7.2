@@ -27,6 +27,7 @@ namespace DataBaseTests
         }
 
         //[Test]
+        //[Ignore("uncompiled")]
         //public void ConstructorTest1()
         //{
         //    database.wordsAmount

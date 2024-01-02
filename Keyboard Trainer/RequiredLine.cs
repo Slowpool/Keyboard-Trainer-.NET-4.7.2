@@ -7,8 +7,6 @@ using System.Windows.Forms;
 
 namespace Keyboard_Trainer
 {
-    #warning this class must have ctrl+backspace method and some classes must have similar.
-
     internal class RequiredLine : Line
     {
         private readonly Label DisplayLabel;
@@ -26,44 +24,9 @@ namespace Keyboard_Trainer
 
         private int currentPosition = 0;
 
-        private int CurrentPosition
-        {
-            get => currentPosition;
-            set
-            {
-                if (value < 0)
-                {
-                    return;
-                }
-                else if (value == LengthOfString)
-                {
-                    return;
-                }
-                else
-                {
-                    currentPosition = value;
-                }
-            }
-        }
-
-        public char ExpectedCharacter
-        {
-            get => RequiredString[CurrentPosition];
-        }
-
         public RequiredLine(Label DisplayLabel, int MaxLength) : base(MaxLength)
         {
             this.DisplayLabel = DisplayLabel;
-        }
-
-        public void NextCharacter()
-        {
-            CurrentPosition++;
-        }
-
-        public void PrevCharacter()
-        {
-            CurrentPosition--;
         }
 
         public void SetNextRequiredLine(string RequiredString)
@@ -71,9 +34,10 @@ namespace Keyboard_Trainer
             this.RequiredString = RequiredString;
         }
 
-        public void PrevWord()
+        public bool IsCorrectSubstring(string substring)
         {
-            throw new NotImplementedException();
+            //int substringLength = substring.Length;
+            return RequiredString.StartsWith(substring);
         }
     }
 }

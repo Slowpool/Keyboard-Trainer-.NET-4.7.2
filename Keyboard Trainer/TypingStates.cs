@@ -1,6 +1,6 @@
 ﻿namespace Keyboard_Trainer
 {
-    public enum States
+    public enum TypingStates
     {
         Mistake,
         Allright,
