@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CharactersGenerator;
 
 namespace Keyboard_Trainer
 {
     public class LineBuilder
     {
-#warning should i initialize these properties or not?
         private Modes Mode { get; set; }
         private Languages Language { get; set; }
 
@@ -38,10 +39,26 @@ namespace Keyboard_Trainer
         public void ChangeMode(Modes Mode)
         {
             this.Mode = Mode;
-            if (Mode == Modes.Text)
+            switch (Mode)
             {
-                text.UploadNewText();
+                case Modes.Text:
+                    text.UploadNewText();
+                    break;
+                case Modes.OwnText:
+                    HandleOwnTextOnce();
+                    break;
             }
+        }
+
+        private void HandleOwnTextOnce()
+        {
+            string ownText = RequestText();
+            text.UploadNewText(ownText);
+        }
+
+        private string RequestText()
+        {
+            return Interaction.InputBox("Insert your own text.");
         }
 
         public void ChangeLanguage(Languages Language)
@@ -52,6 +69,7 @@ namespace Keyboard_Trainer
 
         public string GetNextLine()
         {
+            line.Clear();
             switch(Mode)
             {
                 case Modes.RepetitiveWord:
@@ -60,21 +78,24 @@ namespace Keyboard_Trainer
                 case Modes.SetOfWords:
                     BuildSetOfWords();
                     break;
-#warning need in rework
+                    #warning i didn't implement it
                 case Modes.OneWordThreeTimes:
                     OneWordThreeTimesMode();
                     break;
-#warning in processing
                 case Modes.Text:
                     TextMode();
                     break;
                 case Modes.Digits:
                     BuildDigits();
                     break;
-#warning need in rework
                 case Modes.OwnText:
                     OwnTextMode();
                     break;
+                case Modes.Characters:
+                    BuildCharacters();
+                    break;
+                default:
+                    throw new Exception("Mode wasn't handled");
             }
             return BuiltLine;
         }
@@ -83,7 +104,6 @@ namespace Keyboard_Trainer
         {
             string word = dataBase.GetRandomWord(Language) + " ";
             int wordsAmount = MaxLengthOfLine / word.Length;
-            line.Clear();
             for(int i = 0; i < wordsAmount; i++)
             {
                 line.Append(word);
@@ -94,7 +114,6 @@ namespace Keyboard_Trainer
         private void BuildSetOfWords()
         {
             string word;
-            line.Clear();
             while(true)
             {
                 word = dataBase.GetRandomWord(Language) + " ";
@@ -113,12 +132,13 @@ namespace Keyboard_Trainer
 
         private void OneWordThreeTimesMode()
         {
-            throw new NotImplementedException();
+            string word = dataBase.GetRandomWord(Language) + " ";
+            
+            BuiltLine = word;
         }
 
         private void TextMode()
         {
-            line.Clear();
             BuiltLine = text.GetNextLine();
         }
 
@@ -127,7 +147,6 @@ namespace Keyboard_Trainer
             string number;
             int MaxNumber;
             int CurrentMaxLengthOfNumber;
-            line.Clear();
             while (true)
             {
                 CurrentMaxLengthOfNumber = rnd.Next(MAX_LENGTH_OF_NUMBER_IN_DIGITS_MODE) + 1;
@@ -147,7 +166,13 @@ namespace Keyboard_Trainer
 
         private void OwnTextMode()
         {
-            throw new NotImplementedException();
+            TextMode();
+        }
+
+        private void BuildCharacters()
+        {
+            string characters = Generator.GenerateCharactersWithSpace(MaxLengthOfLine);
+            BuiltLine = characters;
         }
     }
 }

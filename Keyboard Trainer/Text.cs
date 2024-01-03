@@ -68,6 +68,12 @@ namespace Keyboard_Trainer
             FullText.Append(newText);
         }
 
+        public void UploadNewText(string ownText)
+        {
+            FullText.Clear();
+            FullText.Append(ownText + ' ');
+        }
+
         private int GetIndexOfLastAcceptableSpace()
         {
             string lineOfMaxLength = FullText.ToString().Substring(0, MaxLengthOfLine);

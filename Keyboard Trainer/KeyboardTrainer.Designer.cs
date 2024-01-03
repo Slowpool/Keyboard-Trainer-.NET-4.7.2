@@ -42,7 +42,7 @@
             this.TextBoxForTyping.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.TextBoxForTyping.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.TextBoxForTyping.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TextBoxForTyping.Location = new System.Drawing.Point(14, 14);
+            this.TextBoxForTyping.Location = new System.Drawing.Point(197, 54);
             this.TextBoxForTyping.Margin = new System.Windows.Forms.Padding(5);
             this.TextBoxForTyping.Name = "TextBoxForTyping";
             this.TextBoxForTyping.Size = new System.Drawing.Size(818, 30);
@@ -53,7 +53,7 @@
             // 
             this.LabelOfOutputRequiringLine.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelOfOutputRequiringLine.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.LabelOfOutputRequiringLine.Location = new System.Drawing.Point(13, 48);
+            this.LabelOfOutputRequiringLine.Location = new System.Drawing.Point(196, 88);
             this.LabelOfOutputRequiringLine.Name = "LabelOfOutputRequiringLine";
             this.LabelOfOutputRequiringLine.Size = new System.Drawing.Size(819, 25);
             this.LabelOfOutputRequiringLine.TabIndex = 1;
@@ -70,8 +70,9 @@
             "word word word",
             "\"Hello, dear diary!\" - said Amanda after working out. \"Nice!\"",
             "54773 19387 374 75 387 293 5984 17493 0639 390892 103",
-            "Own text"});
-            this.ModesComboBox.Location = new System.Drawing.Point(17, 242);
+            "Own text",
+            "& <~ [@/ -)! `(>@-:;; (.; <, \'{\'>}^/>}, ~<`!|@ {^,& #$% ?`\"/!-}(_@~- "});
+            this.ModesComboBox.Location = new System.Drawing.Point(197, 463);
             this.ModesComboBox.Name = "ModesComboBox";
             this.ModesComboBox.Size = new System.Drawing.Size(815, 29);
             this.ModesComboBox.TabIndex = 2;
@@ -81,7 +82,7 @@
             // 
             this.ModeLabel.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ModeLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ModeLabel.Location = new System.Drawing.Point(16, 214);
+            this.ModeLabel.Location = new System.Drawing.Point(196, 435);
             this.ModeLabel.Name = "ModeLabel";
             this.ModeLabel.Size = new System.Drawing.Size(201, 25);
             this.ModeLabel.TabIndex = 3;
@@ -94,7 +95,7 @@
             this.LanguageComboBox.Items.AddRange(new object[] {
             "English",
             "Russian"});
-            this.LanguageComboBox.Location = new System.Drawing.Point(17, 133);
+            this.LanguageComboBox.Location = new System.Drawing.Point(197, 354);
             this.LanguageComboBox.Name = "LanguageComboBox";
             this.LanguageComboBox.Size = new System.Drawing.Size(210, 29);
             this.LanguageComboBox.TabIndex = 4;
@@ -104,7 +105,7 @@
             // 
             this.LanguageLabel.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LanguageLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.LanguageLabel.Location = new System.Drawing.Point(16, 105);
+            this.LanguageLabel.Location = new System.Drawing.Point(196, 326);
             this.LanguageLabel.Name = "LanguageLabel";
             this.LanguageLabel.Size = new System.Drawing.Size(201, 25);
             this.LanguageLabel.TabIndex = 5;
@@ -112,7 +113,7 @@
             // 
             // RefreshButton
             // 
-            this.RefreshButton.Location = new System.Drawing.Point(326, 125);
+            this.RefreshButton.Location = new System.Drawing.Point(506, 346);
             this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Size = new System.Drawing.Size(144, 43);
             this.RefreshButton.TabIndex = 6;
@@ -125,7 +126,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(846, 426);
+            this.ClientSize = new System.Drawing.Size(1169, 652);
             this.Controls.Add(this.RefreshButton);
             this.Controls.Add(this.LanguageLabel);
             this.Controls.Add(this.LanguageComboBox);

@@ -21,6 +21,8 @@ namespace Keyboard_Trainer
             }
         }
 
+        public int WordsRemained { get; set; }
+
         public Color ForeColor
         {
             get => DisplayLabel.ForeColor;

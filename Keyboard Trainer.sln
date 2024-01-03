@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keyboard Trainer", "Keyboard Trainer\Keyboard Trainer.csproj", "{7222BACD-2FE4-4AC3-99CE-C846292E1704}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseTests", "DataBaseTests\DataBaseTests.csproj", "{B7252D02-C2AD-405C-85CF-90D3C3D8D867}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBaseTests", "DataBaseTests\DataBaseTests.csproj", "{B7252D02-C2AD-405C-85CF-90D3C3D8D867}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

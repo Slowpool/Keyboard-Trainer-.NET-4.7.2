@@ -8,5 +8,6 @@
         Text,
         Digits,
         OwnText,
+        Characters,
     }
 }

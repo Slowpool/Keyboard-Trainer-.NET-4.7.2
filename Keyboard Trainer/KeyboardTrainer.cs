@@ -49,9 +49,15 @@ namespace Keyboard_Trainer
         public KeyboardTrainer()
         {
             InitializeComponent();
+            DisableMnemonicForRequiringLine();
             InitializeObjects();
             InitializeMode();
             InitializeLanguage();
+        }
+
+        private void DisableMnemonicForRequiringLine()
+        {
+            LabelOfOutputRequiringLine.UseMnemonic = false;
         }
 
         private void InitializeObjects()
