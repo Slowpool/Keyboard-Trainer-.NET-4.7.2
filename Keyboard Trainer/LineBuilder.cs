@@ -13,21 +13,27 @@ namespace Keyboard_Trainer
 
         private Languages Language { get; set; }
 
-        private DataBase dataBase { get; set; }
-
         private string BuiltLine {get; set;}
 
         private readonly int MaxLengthOfLine;
 
-        private Text text { get; set; }
+        private readonly DataBase dataBase;
 
-        private StringBuilder line { get; set; }
+        private readonly Text text;
+
+        private readonly StringBuilder line;
+
+        // TODO i should encapsulate each of these properties in one class e.g. digits builder
+        private Random rnd;
+        private const int MAX_LENGTH_OF_NUMBER_IN_DIGITS_MODE = 6;
 
         public LineBuilder(DataBase dataBase, Text text, int MaxLengthOfLine)
         {
             this.dataBase = dataBase;
             this.text = text;
             this.MaxLengthOfLine = MaxLengthOfLine;
+            line = new StringBuilder(MaxLengthOfLine);
+            rnd = new Random();
         }
 
         public void ChangeMode(Modes Mode)
@@ -47,22 +53,25 @@ namespace Keyboard_Trainer
                 case Modes.RepetitiveWord:
                     BuildRepetitiveWord();
                     break;
-#warning need in rework
                 case Modes.SetOfWords:
                     BuildSetOfWords();
                     break;
+#warning need in rework
                 case Modes.OneWordThreeTimes:
                     OneWordThreeTimesMode();
                     break;
+#warning need in rework
                 case Modes.Text:
                     TextMode();
                     break;
+                case Modes.Digits:
+                    BuildDigits();
+                    break;
+#warning need in rework
                 case Modes.OwnText:
                     OwnTextMode();
                     break;
-                case Modes.Digits:
-                    DigitsMode();
-                    break;
+                
             }
             return BuiltLine;
         }
@@ -71,8 +80,8 @@ namespace Keyboard_Trainer
         {
             string word = dataBase.GetRandomWord(Language) + " ";
             int wordsAmount = MaxLengthOfLine / word.Length;
-            line = new StringBuilder(word, MaxLengthOfLine);
-            for(int i = 1; i < wordsAmount; i++)
+            line.Clear();
+            for(int i = 0; i < wordsAmount; i++)
             {
                 line.Append(word);
             }
@@ -81,11 +90,12 @@ namespace Keyboard_Trainer
 
         private void BuildSetOfWords()
         {
-            string word = dataBase.GetRandomWord(Language) + " ";
-            line = new StringBuilder(word, MaxLengthOfLine);
+            string word;
+            line.Clear();
             while(true)
             {
                 word = dataBase.GetRandomWord(Language) + " ";
+                // TODO dude you can redo that later (remove .ToString + word in cond
                 if ((line.ToString() + word).Length > MaxLengthOfLine)
                 {
                     break;
@@ -113,9 +123,27 @@ namespace Keyboard_Trainer
             throw new NotImplementedException();
         }
 
-        private void DigitsMode()
+        private void BuildDigits()
         {
-            throw new NotImplementedException();
+            string number;
+            int MaxNumber;
+            int CurrentMaxLengthOfNumber;
+            line.Clear();
+            while (true)
+            {
+                CurrentMaxLengthOfNumber = rnd.Next(MAX_LENGTH_OF_NUMBER_IN_DIGITS_MODE) + 1;
+                MaxNumber = (int)Math.Pow(10, CurrentMaxLengthOfNumber);
+                number = rnd.Next(MaxNumber).ToString() + " ";
+                if ((line.ToString() + number).Length > MaxLengthOfLine)
+                {
+                    break;
+                }
+                else
+                {
+                    line.Append(number);
+                }
+            }
+            BuiltLine = line.ToString();
         }
     }
 }

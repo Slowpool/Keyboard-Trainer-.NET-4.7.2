@@ -78,7 +78,7 @@ namespace Keyboard_Trainer
             }
             catch
             {
-                //MessageBox.Show("Failed to count rows amount in db", "The command wasn't executed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to count rows amount in db", "The command wasn't executed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -116,7 +116,7 @@ namespace Keyboard_Trainer
             }
             catch
             {
-                //MessageBox.Show("Failed to extracting random word from db", "The command wasn't executed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to extracting random word from db", "The command wasn't executed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

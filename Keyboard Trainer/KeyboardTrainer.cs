@@ -18,11 +18,14 @@ namespace Keyboard_Trainer
         private DataBase dataBase;
         private const int MaxLengthOfLine = 80;
 
+        private Modes mode;
         public Modes Mode
-        { 
+        {
+            get => mode;
             set
             {
                 controller.ChangeMode(value);
+                mode = value;
             }
         }
 
@@ -31,6 +34,15 @@ namespace Keyboard_Trainer
             set
             {
                 controller.ChangeLanguage(value);
+            }
+        }
+
+        private bool DisplayLanguages
+        {
+            set
+            {
+                LanguageComboBox.Visible = value;
+                LanguageLabel.Visible = value;
             }
         }
 
@@ -88,6 +100,29 @@ namespace Keyboard_Trainer
         private void ModesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Mode = (Modes)ModesComboBox.SelectedIndex;
+            if(ShouldHideLanguages(Mode))
+            {
+                DisplayLanguages = false;
+            }
+            else
+            {
+                DisplayLanguages = true;
+            }
+        }
+
+        private bool ShouldHideLanguages(Modes Mode)
+        {
+            if (Mode == Modes.OwnText)
+            {
+                return true;
+            }
+
+            if (Mode == Modes.Digits)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private void LanguageComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,11 +130,9 @@ namespace Keyboard_Trainer
             Language = (Languages)LanguageComboBox.SelectedIndex;
         }
 
-#warning debug event
-        private void DebugButton_Click(object sender, EventArgs e)
+        private void RefreshButton_Click(object sender, EventArgs e)
         {
             controller.DisplayNextLine();
         }
-
     }
 }

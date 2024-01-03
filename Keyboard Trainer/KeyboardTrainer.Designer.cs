@@ -34,7 +34,7 @@
             this.ModeLabel = new System.Windows.Forms.Label();
             this.LanguageComboBox = new System.Windows.Forms.ComboBox();
             this.LanguageLabel = new System.Windows.Forms.Label();
-            this.DebugButton = new System.Windows.Forms.Button();
+            this.RefreshButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TextBoxForTyping
@@ -57,7 +57,6 @@
             this.LabelOfOutputRequiringLine.Name = "LabelOfOutputRequiringLine";
             this.LabelOfOutputRequiringLine.Size = new System.Drawing.Size(819, 25);
             this.LabelOfOutputRequiringLine.TabIndex = 1;
-            this.LabelOfOutputRequiringLine.Text = "zdarova mir kak tvoi DELAA OO";
             // 
             // ModesComboBox
             // 
@@ -111,15 +110,15 @@
             this.LanguageLabel.TabIndex = 5;
             this.LanguageLabel.Text = "Language";
             // 
-            // DebugButton
+            // RefreshButton
             // 
-            this.DebugButton.Location = new System.Drawing.Point(396, 133);
-            this.DebugButton.Name = "DebugButton";
-            this.DebugButton.Size = new System.Drawing.Size(144, 43);
-            this.DebugButton.TabIndex = 6;
-            this.DebugButton.Text = "DebugButton";
-            this.DebugButton.UseVisualStyleBackColor = true;
-            this.DebugButton.Click += new System.EventHandler(this.DebugButton_Click);
+            this.RefreshButton.Location = new System.Drawing.Point(326, 125);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(144, 43);
+            this.RefreshButton.TabIndex = 6;
+            this.RefreshButton.Text = "Refresh";
+            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
             // KeyboardTrainer
             // 
@@ -127,7 +126,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(846, 426);
-            this.Controls.Add(this.DebugButton);
+            this.Controls.Add(this.RefreshButton);
             this.Controls.Add(this.LanguageLabel);
             this.Controls.Add(this.LanguageComboBox);
             this.Controls.Add(this.ModeLabel);
@@ -154,7 +153,7 @@
         private System.Windows.Forms.Label ModeLabel;
         private System.Windows.Forms.ComboBox LanguageComboBox;
         private System.Windows.Forms.Label LanguageLabel;
-        private System.Windows.Forms.Button DebugButton;
+        private System.Windows.Forms.Button RefreshButton;
     }
 }
 
