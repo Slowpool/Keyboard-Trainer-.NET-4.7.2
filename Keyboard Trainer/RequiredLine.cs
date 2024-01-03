@@ -30,10 +30,6 @@ namespace Keyboard_Trainer
             }
         }
 
-        private int LengthOfString => RequiredString.Length;
-
-        private int currentPosition = 0;
-
         public RequiredLine(Label DisplayLabel, int MaxLength) : base(MaxLength)
         {
             this.DisplayLabel = DisplayLabel;

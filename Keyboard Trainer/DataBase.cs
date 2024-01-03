@@ -16,8 +16,8 @@ namespace Keyboard_Trainer
         public Dictionary<Languages, int> TextsAmount;
         public Dictionary<string, Dictionary<Languages, int>> KindsOfData;
 
-        const string CountRowsCommandPattern = "SELECT COUNT(*) FROM {0}_{1};";
-        const string RandomRowCommandPattern = "SELECT {0} FROM {1}_{0} WHERE id = {2};";
+        private const string CountRowsCommandPattern = "SELECT COUNT(*) FROM {0}_{1};";
+        private const string RandomRowCommandPattern = "SELECT {0} FROM {1}_{0} WHERE id = {2};";
 
         public DataBase(string connectionString)
         {

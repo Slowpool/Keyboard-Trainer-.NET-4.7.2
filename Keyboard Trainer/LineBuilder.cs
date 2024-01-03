@@ -10,7 +10,6 @@ namespace Keyboard_Trainer
     {
 #warning should i initialize these properties or not?
         private Modes Mode { get; set; }
-
         private Languages Language { get; set; }
 
         private string BuiltLine {get; set;}
@@ -39,11 +38,16 @@ namespace Keyboard_Trainer
         public void ChangeMode(Modes Mode)
         {
             this.Mode = Mode;
+            if (Mode == Modes.Text)
+            {
+                text.UploadNewText();
+            }
         }
 
         public void ChangeLanguage(Languages Language)
         {
             this.Language = Language;
+            text.Language = Language;
         }
 
         public string GetNextLine()
@@ -60,7 +64,7 @@ namespace Keyboard_Trainer
                 case Modes.OneWordThreeTimes:
                     OneWordThreeTimesMode();
                     break;
-#warning need in rework
+#warning in processing
                 case Modes.Text:
                     TextMode();
                     break;
@@ -71,7 +75,6 @@ namespace Keyboard_Trainer
                 case Modes.OwnText:
                     OwnTextMode();
                     break;
-                
             }
             return BuiltLine;
         }
@@ -115,12 +118,8 @@ namespace Keyboard_Trainer
 
         private void TextMode()
         {
-            throw new NotImplementedException();
-        }
-
-        private void OwnTextMode()
-        {
-            throw new NotImplementedException();
+            line.Clear();
+            BuiltLine = text.GetNextLine();
         }
 
         private void BuildDigits()
@@ -144,6 +143,11 @@ namespace Keyboard_Trainer
                 }
             }
             BuiltLine = line.ToString();
+        }
+
+        private void OwnTextMode()
+        {
+            throw new NotImplementedException();
         }
     }
 }
