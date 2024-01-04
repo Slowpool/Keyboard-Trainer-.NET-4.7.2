@@ -17,6 +17,7 @@ namespace Keyboard_Trainer
         
         private DataBase dataBase;
         private const int MaxLengthOfLine = 80;
+        private FullScreen fullScreen;
 
         private Modes mode;
         public Modes Mode
@@ -53,6 +54,7 @@ namespace Keyboard_Trainer
             InitializeObjects();
             InitializeMode();
             InitializeLanguage();
+            ToCenter();
         }
 
         private void DisableMnemonicForRequiringLine()
@@ -62,8 +64,14 @@ namespace Keyboard_Trainer
 
         private void InitializeObjects()
         {
+            InitializeFullScreen();
             InitializeDataBase();
             InitializeControllerAndHisComponents();
+        }
+
+        private void InitializeFullScreen()
+        {
+            fullScreen = new FullScreen(this);
         }
 
         private void InitializeDataBase()
@@ -90,7 +98,7 @@ namespace Keyboard_Trainer
 
         private void InitializeMode()
         {
-            ModesComboBox.SelectedIndex = 0;
+            ModeComboBox.SelectedIndex = 0;
         }
 
         private void InitializeLanguage()
@@ -105,7 +113,7 @@ namespace Keyboard_Trainer
 
         private void ModesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Mode = (Modes)ModesComboBox.SelectedIndex;
+            Mode = (Modes)ModeComboBox.SelectedIndex;
             if(ShouldHideLanguages(Mode))
             {
                 DisplayLanguages = false;
@@ -128,6 +136,11 @@ namespace Keyboard_Trainer
                 return true;
             }
 
+            if (Mode == Modes.Characters)
+            {
+                return true;
+            }
+
             return false;
         }
 
@@ -138,7 +151,28 @@ namespace Keyboard_Trainer
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            controller.DisplayNextLine();
+            Mode = Mode;
+        }
+
+        private void FullScreenButton_Click(object sender, EventArgs e)
+        {
+            #warning finish it
+            if (fullScreen.IsFullScreenNow)
+            {
+                fullScreen.Disable();
+            }
+            else
+            {
+                fullScreen.Enable();
+            }
+            ToCenter();
+        }
+
+        private void ToCenter()
+        {
+            PanelWithAllComponents.Location = new Point(
+                (ClientSize.Width - PanelWithAllComponents.Width) / 2,
+                (ClientSize.Height - PanelWithAllComponents.Height) / 2);
         }
     }
 }
