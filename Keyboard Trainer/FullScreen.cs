@@ -1,11 +1,9 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Keyboard_Trainer
 {
     public class FullScreen
     {
-
         private readonly Form form;
 
         public bool IsFullScreenNow { get; set; }

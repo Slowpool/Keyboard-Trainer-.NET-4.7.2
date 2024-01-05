@@ -1,10 +1,8 @@
 ﻿using Microsoft.VisualBasic;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using CharactersGenerator;
+using System.Windows.Forms;
 
 namespace Keyboard_Trainer
 {
@@ -23,15 +21,20 @@ namespace Keyboard_Trainer
 
         private readonly StringBuilder line;
 
+        private readonly Label[] labels;
+
         // TODO i should encapsulate each of these properties in one class e.g. digits builder
         private Random rnd;
         private const int MAX_LENGTH_OF_NUMBER_IN_DIGITS_MODE = 6;
 
-        public LineBuilder(DataBase dataBase, Text text, int MaxLengthOfLine)
+        private int CounterForThreeWordsMode { get; set; }
+
+        public LineBuilder(DataBase dataBase, Text text, int MaxLengthOfLine, Label[] labels)
         {
             this.dataBase = dataBase;
             this.text = text;
             this.MaxLengthOfLine = MaxLengthOfLine;
+            this.labels = labels;
             line = new StringBuilder(MaxLengthOfLine);
             rnd = new Random();
         }
@@ -46,6 +49,9 @@ namespace Keyboard_Trainer
                     break;
                 case Modes.OwnText:
                     HandleOwnTextOnce();
+                    break;
+                case Modes.OneWordThreeTimes:
+                    RefreshWord();
                     break;
             }
         }
@@ -132,8 +138,58 @@ namespace Keyboard_Trainer
 
         private void OneWordThreeTimesMode()
         {
+            if (CounterForThreeWordsMode == 3)
+            {
+                RefreshCondition();
+            }
+            else
+            {
+                CounterForThreeWordsMode++;
+            }
+            // TODO i didn't do it....
+            //DisplayNecessaryAmountOfWords();
+        }
+
+        private void DisplayNecessaryAmountOfWords()
+        {
+            switch(CounterForThreeWordsMode)
+            {
+                case 1:
+                    labels[0].Visible = true;
+                    labels[1].Visible = true;
+                    break;
+                case 2:
+                    labels[0].Visible = true;
+                    labels[1].Visible = false;
+                    break;
+                case 3:
+                    labels[0].Visible = false;
+                    labels[1].Visible = false;
+                    break;
+                default:
+                    throw new Exception("incorrect amount of words");
+            }
+        }
+
+        private void RefreshCondition()
+        {
+            RefreshCounter();
+            RefreshWord();
+        }
+
+        private void RefreshLabels()
+        {
+
+        }
+
+        private void RefreshCounter()
+        {
+            CounterForThreeWordsMode = 1;
+        }
+
+        private void RefreshWord()
+        {
             string word = dataBase.GetRandomWord(Language) + " ";
-            
             BuiltLine = word;
         }
 

@@ -37,6 +37,8 @@
             this.RefreshButton = new System.Windows.Forms.Button();
             this.FullScreenButton = new System.Windows.Forms.Button();
             this.PanelWithAllComponents = new System.Windows.Forms.Panel();
+            this.LabelWithSecondWord = new System.Windows.Forms.Label();
+            this.LabelWithThirdWord = new System.Windows.Forms.Label();
             this.PanelWithAllComponents.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -146,6 +148,8 @@
             // 
             // PanelWithAllComponents
             // 
+            this.PanelWithAllComponents.Controls.Add(this.LabelWithThirdWord);
+            this.PanelWithAllComponents.Controls.Add(this.LabelWithSecondWord);
             this.PanelWithAllComponents.Controls.Add(this.LabelOfOutputRequiringLine);
             this.PanelWithAllComponents.Controls.Add(this.ModeComboBox);
             this.PanelWithAllComponents.Controls.Add(this.ModeLabel);
@@ -158,6 +162,27 @@
             this.PanelWithAllComponents.Name = "PanelWithAllComponents";
             this.PanelWithAllComponents.Size = new System.Drawing.Size(1075, 438);
             this.PanelWithAllComponents.TabIndex = 9;
+            // 
+            // LabelWithSecondWord
+            // 
+            this.LabelWithSecondWord.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelWithSecondWord.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.LabelWithSecondWord.Location = new System.Drawing.Point(4, 80);
+            this.LabelWithSecondWord.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LabelWithSecondWord.Name = "LabelWithSecondWord";
+            this.LabelWithSecondWord.Size = new System.Drawing.Size(1065, 32);
+            this.LabelWithSecondWord.TabIndex = 9;
+            this.LabelWithSecondWord.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // LabelWithThirdWord
+            // 
+            this.LabelWithThirdWord.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelWithThirdWord.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.LabelWithThirdWord.Location = new System.Drawing.Point(4, 112);
+            this.LabelWithThirdWord.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LabelWithThirdWord.Name = "LabelWithThirdWord";
+            this.LabelWithThirdWord.Size = new System.Drawing.Size(1065, 32);
+            this.LabelWithThirdWord.TabIndex = 10;
             // 
             // KeyboardTrainer
             // 
@@ -190,6 +215,8 @@
         private System.Windows.Forms.Button RefreshButton;
         private System.Windows.Forms.Button FullScreenButton;
         private System.Windows.Forms.Panel PanelWithAllComponents;
+        private System.Windows.Forms.Label LabelWithSecondWord;
+        private System.Windows.Forms.Label LabelWithThirdWord;
     }
 }
 

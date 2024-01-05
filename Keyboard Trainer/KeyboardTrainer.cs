@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Keyboard_Trainer
@@ -92,7 +85,7 @@ namespace Keyboard_Trainer
             var requiredLine = new RequiredLine(LabelOfOutputRequiringLine, MaxLengthOfLine);
             var typeLine = new TypeLine(TextBoxForTyping, MaxLengthOfLine);
             var text = new Text(dataBase, MaxLengthOfLine);
-            var lineBuilder = new LineBuilder(dataBase, text, MaxLengthOfLine);
+            var lineBuilder = new LineBuilder(dataBase, text, MaxLengthOfLine, new[] { LabelWithSecondWord, LabelWithThirdWord });
             controller = new Controller(requiredLine, typeLine, this, lineBuilder);
         }
 
@@ -177,6 +170,11 @@ namespace Keyboard_Trainer
             PanelWithAllComponents.Location = new Point(
                 (ClientSize.Width - PanelWithAllComponents.Width) / 2,
                 (ClientSize.Height - PanelWithAllComponents.Height) / 2);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

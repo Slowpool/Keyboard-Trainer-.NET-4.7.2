@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Keyboard_Trainer
 {
@@ -25,7 +26,16 @@ namespace Keyboard_Trainer
             FullText = new StringBuilder();
         }
 
-        public Languages Language { get; set; }
+        private Languages language;
+        public Languages Language
+        {
+            get => language;
+            set
+            {
+                language = value;
+                UploadNewText();
+            }
+        }
 
         private string line;
 
