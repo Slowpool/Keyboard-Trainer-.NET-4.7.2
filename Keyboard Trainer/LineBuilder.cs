@@ -171,8 +171,22 @@ namespace Keyboard_Trainer
 
         private void BuildCharacters()
         {
-            string characters = Generator.GenerateCharactersWithSpace(MaxLengthOfLine);
+                                                        // -1 was added for space at the end
+            string characters = Generator.GenerateCharactersWithSpace(MaxLengthOfLine - 1);
+            characters = GuaranteeSpaceAtTheEnd(characters);
             BuiltLine = characters;
+        }
+
+        private string GuaranteeSpaceAtTheEnd(string @string)
+        {
+            if (@string[@string.Length - 1] == ' ')
+            {
+                return @string;
+            }
+            else
+            {
+                return @string + ' ';
+            }
         }
     }
 }

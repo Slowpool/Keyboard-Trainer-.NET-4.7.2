@@ -56,7 +56,7 @@
             // 
             this.LabelOfOutputRequiringLine.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LabelOfOutputRequiringLine.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.LabelOfOutputRequiringLine.Location = new System.Drawing.Point(1, 48);
+            this.LabelOfOutputRequiringLine.Location = new System.Drawing.Point(4, 48);
             this.LabelOfOutputRequiringLine.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelOfOutputRequiringLine.Name = "LabelOfOutputRequiringLine";
             this.LabelOfOutputRequiringLine.Size = new System.Drawing.Size(1065, 32);

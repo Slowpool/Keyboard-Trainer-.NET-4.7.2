@@ -122,6 +122,7 @@ namespace Keyboard_Trainer
             {
                 DisplayLanguages = true;
             }
+            TextBoxForTyping.Focus();
         }
 
         private bool ShouldHideLanguages(Modes Mode)
@@ -147,11 +148,13 @@ namespace Keyboard_Trainer
         private void LanguageComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Language = (Languages)LanguageComboBox.SelectedIndex;
+            TextBoxForTyping.Focus();
         }
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
             Mode = Mode;
+            TextBoxForTyping.Focus();
         }
 
         private void FullScreenButton_Click(object sender, EventArgs e)
@@ -166,6 +169,7 @@ namespace Keyboard_Trainer
                 fullScreen.Enable();
             }
             ToCenter();
+            TextBoxForTyping.Focus();
         }
 
         private void ToCenter()
