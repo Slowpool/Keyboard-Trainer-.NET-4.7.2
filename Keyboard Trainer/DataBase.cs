@@ -8,13 +8,12 @@ namespace Keyboard_Trainer
 {
     public class DataBase
     {
-#warning all properties opened for tests
-        public MySqlConnection connection;
-        public MySqlCommand Command;
-        public Random rnd;
-        public Dictionary<Languages, int> WordsAmount;
-        public Dictionary<Languages, int> TextsAmount;
-        public Dictionary<string, Dictionary<Languages, int>> KindsOfData;
+        private readonly MySqlConnection connection;
+        private readonly Random rnd;
+        private readonly Dictionary<Languages, int> WordsAmount;
+        private readonly Dictionary<Languages, int> TextsAmount;
+        private readonly Dictionary<string, Dictionary<Languages, int>> KindsOfData;
+        private MySqlCommand Command;
 
         private const string CountRowsCommandPattern = "SELECT COUNT(*) FROM {0}_{1};";
         private const string RandomRowCommandPattern = "SELECT {0} FROM {1}_{0} WHERE id = {2};";
@@ -22,12 +21,6 @@ namespace Keyboard_Trainer
         public DataBase(string connectionString)
         {
             connection = new MySqlConnection(connectionString);
-            InitializeObjects();
-            CountWordsAndTexts();
-        }
-
-        private void InitializeObjects()
-        {
             rnd = new Random();
             WordsAmount = new Dictionary<Languages, int>();
             TextsAmount = new Dictionary<Languages, int>();
@@ -37,6 +30,7 @@ namespace Keyboard_Trainer
                 { "text", TextsAmount },
             };
             FillLanguages();
+            CountWordsAndTexts();
         }
 
         private void FillLanguages()

@@ -2,7 +2,7 @@
 
 namespace Keyboard_Trainer
 {
-    internal class TypeLine : Line
+    internal class TypeLine
     {
         private readonly TextBox TypingTextBox;
 
@@ -15,14 +15,9 @@ namespace Keyboard_Trainer
             }
         }
 
-        public int CharactersAmount { get; private set; }
-
-        public TypingStates TypingState { get; private set; }
-        
-        public TypeLine(TextBox TypingTextBox, int MaxLength) : base(MaxLength)
+        public TypeLine(TextBox TypingTextBox)
         {
             this.TypingTextBox = TypingTextBox;
-            CharactersAmount = 0;
         }
 
         public void Clear()

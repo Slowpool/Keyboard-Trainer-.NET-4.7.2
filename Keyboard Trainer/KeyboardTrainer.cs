@@ -47,7 +47,7 @@ namespace Keyboard_Trainer
             InitializeObjects();
             InitializeMode();
             InitializeLanguage();
-            ToCenter();
+            ToCenterTheComponents();
         }
 
         private void DisableMnemonicForRequiringLine()
@@ -81,12 +81,11 @@ namespace Keyboard_Trainer
 
         private void InitializeControllerAndHisComponents()
         {
-            #warning do requiredLine really need in max length of line?
-            var requiredLine = new RequiredLine(LabelOfOutputRequiringLine, MaxLengthOfLine);
-            var typeLine = new TypeLine(TextBoxForTyping, MaxLengthOfLine);
+            var requiredLine = new RequiredLine(LabelOfOutputRequiringLine);
+            var typeLine = new TypeLine(TextBoxForTyping);
             var text = new Text(dataBase, MaxLengthOfLine);
-            var lineBuilder = new LineBuilder(dataBase, text, MaxLengthOfLine, new[] { LabelWithSecondWord, LabelWithThirdWord });
-            controller = new Controller(requiredLine, typeLine, this, lineBuilder);
+            var lineBuilder = new LineBuilder(dataBase, text, MaxLengthOfLine);
+            controller = new Controller(requiredLine, typeLine, lineBuilder);
         }
 
         private void InitializeMode()
@@ -97,6 +96,13 @@ namespace Keyboard_Trainer
         private void InitializeLanguage()
         {
             LanguageComboBox.SelectedIndex = 0;
+        }
+
+        private void ToCenterTheComponents()
+        {
+            PanelWithAllComponents.Location = new Point(
+                (ClientSize.Width - PanelWithAllComponents.Width) / 2,
+                (ClientSize.Height - PanelWithAllComponents.Height) / 2);
         }
 
         private void TextBoxForTyping_TextChanged(object sender, EventArgs e)
@@ -152,7 +158,6 @@ namespace Keyboard_Trainer
 
         private void FullScreenButton_Click(object sender, EventArgs e)
         {
-            #warning finish it
             if (fullScreen.IsFullScreenNow)
             {
                 fullScreen.Disable();
@@ -161,20 +166,8 @@ namespace Keyboard_Trainer
             {
                 fullScreen.Enable();
             }
-            ToCenter();
+            ToCenterTheComponents();
             TextBoxForTyping.Focus();
-        }
-
-        private void ToCenter()
-        {
-            PanelWithAllComponents.Location = new Point(
-                (ClientSize.Width - PanelWithAllComponents.Width) / 2,
-                (ClientSize.Height - PanelWithAllComponents.Height) / 2);
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

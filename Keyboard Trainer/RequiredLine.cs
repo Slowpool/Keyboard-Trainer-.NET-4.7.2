@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Keyboard_Trainer
 {
-    internal class RequiredLine : Line
+    internal class RequiredLine
     {
         private readonly Label DisplayLabel;
         // GODLIKE PROPERTY DEMONSTRATION
@@ -15,7 +15,8 @@ namespace Keyboard_Trainer
                 DisplayLabel.Text = value;
             }
         }
-
+        
+        #warning one word three times
         public int WordsRemained { get; set; }
 
         public Color ForeColor
@@ -27,7 +28,7 @@ namespace Keyboard_Trainer
             }
         }
 
-        public RequiredLine(Label DisplayLabel, int MaxLength) : base(MaxLength)
+        public RequiredLine(Label DisplayLabel)
         {
             this.DisplayLabel = DisplayLabel;
         }

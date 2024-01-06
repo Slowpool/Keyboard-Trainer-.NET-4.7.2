@@ -8,18 +8,15 @@ namespace Keyboard_Trainer
 
         private readonly RequiredLine requiredLine;
 
-        private readonly KeyboardTrainer mainForm;
-
         private readonly LineBuilder lineBuilder;
 
         public readonly Color UsualColor = Color.FromArgb(255, 255, 255); // white
         public readonly Color MistakeColor = Color.FromArgb(255, 255, 0); // yellow
 
-        public Controller(RequiredLine requiredLine, TypeLine typeLine, KeyboardTrainer mainForm, LineBuilder lineBuilder)
+        public Controller(RequiredLine requiredLine, TypeLine typeLine, LineBuilder lineBuilder)
         {
             this.requiredLine = requiredLine;
             this.typeLine = typeLine;
-            this.mainForm = mainForm;
             this.lineBuilder = lineBuilder;
         }
 
@@ -65,9 +62,9 @@ namespace Keyboard_Trainer
             }
         }
 
-        private bool IsCorrectSubstring(string @string)
+        private bool IsCorrectSubstring(string substring)
         {
-            return requiredLine.IsCorrectSubstring(@string);
+            return requiredLine.IsCorrectSubstring(substring);
         }
 
         private void HandleCorrectString(string @string)
@@ -84,9 +81,9 @@ namespace Keyboard_Trainer
             requiredLine.ForeColor = UsualColor;
         }
 
-        private bool IsFinalLine(string @string)
+        private bool IsFinalLine(string line)
         {
-            return requiredLine.IsFinalLine(@string);
+            return requiredLine.IsFinalLine(line);
         }
 
         public void SetMistakeState()

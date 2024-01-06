@@ -21,20 +21,17 @@ namespace Keyboard_Trainer
 
         private readonly StringBuilder line;
 
-        private readonly Label[] labels;
-
         // TODO i should encapsulate each of these properties in one class e.g. digits builder
         private Random rnd;
         private const int MAX_LENGTH_OF_NUMBER_IN_DIGITS_MODE = 6;
 
         private int CounterForThreeWordsMode { get; set; }
 
-        public LineBuilder(DataBase dataBase, Text text, int MaxLengthOfLine, Label[] labels)
+        public LineBuilder(DataBase dataBase, Text text, int MaxLengthOfLine)
         {
             this.dataBase = dataBase;
             this.text = text;
             this.MaxLengthOfLine = MaxLengthOfLine;
-            this.labels = labels;
             line = new StringBuilder(MaxLengthOfLine);
             rnd = new Random();
         }
@@ -150,36 +147,10 @@ namespace Keyboard_Trainer
             //DisplayNecessaryAmountOfWords();
         }
 
-        private void DisplayNecessaryAmountOfWords()
-        {
-            switch(CounterForThreeWordsMode)
-            {
-                case 1:
-                    labels[0].Visible = true;
-                    labels[1].Visible = true;
-                    break;
-                case 2:
-                    labels[0].Visible = true;
-                    labels[1].Visible = false;
-                    break;
-                case 3:
-                    labels[0].Visible = false;
-                    labels[1].Visible = false;
-                    break;
-                default:
-                    throw new Exception("incorrect amount of words");
-            }
-        }
-
         private void RefreshCondition()
         {
             RefreshCounter();
             RefreshWord();
-        }
-
-        private void RefreshLabels()
-        {
-
         }
 
         private void RefreshCounter()

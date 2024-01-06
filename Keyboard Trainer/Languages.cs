@@ -1,5 +1,4 @@
-﻿
-namespace Keyboard_Trainer
+﻿namespace Keyboard_Trainer
 {
     public enum Languages
     {
