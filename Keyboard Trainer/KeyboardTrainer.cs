@@ -7,10 +7,10 @@ namespace Keyboard_Trainer
     public partial class KeyboardTrainer : Form
     {
         private Controller controller;
-        
         private DataBase dataBase;
-        private const int MaxLengthOfLine = 80;
         private FullScreen fullScreen;
+
+        private const int MaxLengthOfLine = 80;
 
         private Modes mode;
         public Modes Mode
