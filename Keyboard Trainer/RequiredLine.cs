@@ -28,6 +28,7 @@ namespace Keyboard_Trainer
             }
         }
 
+
         public RequiredLine(Label DisplayLabel)
         {
             this.DisplayLabel = DisplayLabel;

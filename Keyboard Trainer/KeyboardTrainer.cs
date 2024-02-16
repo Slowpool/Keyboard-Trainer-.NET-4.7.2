@@ -91,6 +91,7 @@ namespace Keyboard_Trainer
         private void InitializeMode()
         {
             ModeComboBox.SelectedIndex = 0;
+            checkBoxHardcoreMode.Checked = false;
         }
 
         private void InitializeLanguage()
@@ -167,6 +168,12 @@ namespace Keyboard_Trainer
                 fullScreen.Enable();
             }
             ToCenterTheComponents();
+            TextBoxForTyping.Focus();
+        }
+
+        private void checkBoxHardcoreMode_CheckedChanged(object sender, EventArgs e)
+        {
+            controller.HardcoreMode = checkBoxHardcoreMode.Checked;
             TextBoxForTyping.Focus();
         }
     }

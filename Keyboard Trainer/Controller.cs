@@ -13,6 +13,25 @@ namespace Keyboard_Trainer
         public readonly Color UsualColor = Color.FromArgb(255, 255, 255); // white
         public readonly Color MistakeColor = Color.FromArgb(255, 255, 0); // yellow
 
+        private bool hardcoreMode;
+        public bool HardcoreMode
+        {
+            get => hardcoreMode;
+            set
+            {
+                if (value == true)
+                {
+                    if (MistakeState)
+                    {
+                        typeLine.Clear();
+                    }
+                }
+                hardcoreMode = value;
+            }
+        }
+
+        public bool MistakeState => requiredLine.ForeColor == MistakeColor;
+
         public Controller(RequiredLine requiredLine, TypeLine typeLine, LineBuilder lineBuilder)
         {
             this.requiredLine = requiredLine;
@@ -88,7 +107,14 @@ namespace Keyboard_Trainer
 
         public void SetMistakeState()
         {
-            requiredLine.ForeColor = MistakeColor;
+            if (HardcoreMode)
+            {
+                typeLine.Clear();
+            }
+            else
+            {
+                requiredLine.ForeColor = MistakeColor;
+            }
         }
     }
 }

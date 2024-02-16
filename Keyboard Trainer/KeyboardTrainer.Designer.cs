@@ -37,6 +37,7 @@
             this.RefreshButton = new System.Windows.Forms.Button();
             this.FullScreenButton = new System.Windows.Forms.Button();
             this.PanelWithAllComponents = new System.Windows.Forms.Panel();
+            this.checkBoxHardcoreMode = new System.Windows.Forms.CheckBox();
             this.PanelWithAllComponents.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -146,6 +147,7 @@
             // 
             // PanelWithAllComponents
             // 
+            this.PanelWithAllComponents.Controls.Add(this.checkBoxHardcoreMode);
             this.PanelWithAllComponents.Controls.Add(this.LabelOfOutputRequiringLine);
             this.PanelWithAllComponents.Controls.Add(this.ModeComboBox);
             this.PanelWithAllComponents.Controls.Add(this.ModeLabel);
@@ -158,6 +160,19 @@
             this.PanelWithAllComponents.Name = "PanelWithAllComponents";
             this.PanelWithAllComponents.Size = new System.Drawing.Size(1075, 438);
             this.PanelWithAllComponents.TabIndex = 9;
+            // 
+            // checkBoxHardcoreMode
+            // 
+            this.checkBoxHardcoreMode.AutoSize = true;
+            this.checkBoxHardcoreMode.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxHardcoreMode.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.checkBoxHardcoreMode.Location = new System.Drawing.Point(432, 286);
+            this.checkBoxHardcoreMode.Name = "checkBoxHardcoreMode";
+            this.checkBoxHardcoreMode.Size = new System.Drawing.Size(135, 32);
+            this.checkBoxHardcoreMode.TabIndex = 9;
+            this.checkBoxHardcoreMode.Text = "Hardcore";
+            this.checkBoxHardcoreMode.UseVisualStyleBackColor = true;
+            this.checkBoxHardcoreMode.CheckedChanged += new System.EventHandler(this.checkBoxHardcoreMode_CheckedChanged);
             // 
             // KeyboardTrainer
             // 
@@ -190,6 +205,7 @@
         private System.Windows.Forms.Button RefreshButton;
         private System.Windows.Forms.Button FullScreenButton;
         private System.Windows.Forms.Panel PanelWithAllComponents;
+        private System.Windows.Forms.CheckBox checkBoxHardcoreMode;
     }
 }
 
