@@ -18,6 +18,11 @@ namespace Keyboard_Trainer
         private const string CountRowsCommandPattern = "SELECT COUNT(*) FROM {0}_{1};";
         private const string RandomRowCommandPattern = "SELECT {0} FROM {1}_{0} WHERE id = {2};";
 
+        private const string insertPattern = "INSERT INTO {0}_{1} VALUES ";
+        private const string insertedValuePattern = "(NULL, '{0}')";
+
+        private const string deleteFromPattern = "DELETE FROM {0}_{1};";
+
         public DataBase(string connectionString)
         {
             connection = new MySqlConnection(connectionString);
@@ -91,6 +96,11 @@ namespace Keyboard_Trainer
             return GetRandomRow("text", language);
         }
 
+        internal string GetRandomSong(Languages language)
+        {
+            return GetRandomRow("song", language);
+        }
+
         private string GetRandomRow(string kindOfData, Languages language)
         {
             int rowsAmount = KindsOfData[kindOfData][language];
@@ -110,13 +120,38 @@ namespace Keyboard_Trainer
             }
             catch
             {
-                MessageBox.Show("Failed to extracting random word from db", "The command wasn't executed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(caption: "The command wasn't executed",
+                                text: "Failed to extracting random word from db",
+                                buttons: MessageBoxButtons.OK,
+                                icon: MessageBoxIcon.Error);
             }
             finally
             {
                 connection.Close();
             }
             return row;
+        }
+
+        internal void Delete(string typeOfData, string language)
+        {
+            string command = string.Format(deleteFromPattern, language, typeOfData);
+            connection.Open();
+            Command = new MySqlCommand(command, connection);
+            connection.Close();
+
+            try
+            {
+                connection.Open();
+                Command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Deleting error: " + e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
     }
 }

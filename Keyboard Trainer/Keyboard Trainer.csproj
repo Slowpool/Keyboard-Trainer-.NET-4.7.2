@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\azgel\Desktop\keyboard trainer\</PublishUrl>
+    <PublishUrl>C:\Users\azgel\Desktop\мои проги\keyboard trainer\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -105,8 +105,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminMenu.Designer.cs">
+      <DependentUpon>AdminMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controller.cs" />
     <Compile Include="DataBase.cs" />
+    <Compile Include="DataParser.cs" />
+    <Compile Include="ExtensionsDataParser.cs" />
     <Compile Include="FullScreen.cs" />
     <Compile Include="KeyboardTrainer.cs">
       <SubType>Form</SubType>
@@ -122,6 +130,10 @@
     <Compile Include="RequiredLine.cs" />
     <Compile Include="Text.cs" />
     <Compile Include="TypeLine.cs" />
+    <Compile Include="TypesOfParsingData.cs" />
+    <EmbeddedResource Include="AdminMenu.resx">
+      <DependentUpon>AdminMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="KeyboardTrainer.resx">
       <DependentUpon>KeyboardTrainer.cs</DependentUpon>
     </EmbeddedResource>

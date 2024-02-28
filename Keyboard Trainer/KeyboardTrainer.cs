@@ -9,6 +9,7 @@ namespace Keyboard_Trainer
         private Controller controller;
         private DataBase dataBase;
         private FullScreen fullScreen;
+        private AdminMenu adminMenu;
 
         private const int MaxLengthOfLine = 80;
 
@@ -43,28 +44,19 @@ namespace Keyboard_Trainer
         public KeyboardTrainer()
         {
             InitializeComponent();
-            DisableMnemonicForRequiringLine();
+            LabelOfOutputRequiringLine.UseMnemonic = false;
             InitializeObjects();
             InitializeMode();
             InitializeLanguage();
             ToCenterTheComponents();
         }
 
-        private void DisableMnemonicForRequiringLine()
-        {
-            LabelOfOutputRequiringLine.UseMnemonic = false;
-        }
-
         private void InitializeObjects()
         {
-            InitializeFullScreen();
-            InitializeDataBase();
-            InitializeControllerAndHisComponents();
-        }
-
-        private void InitializeFullScreen()
-        {
             fullScreen = new FullScreen(this);
+            InitializeDataBase();
+            adminMenu = new AdminMenu(dataBase);
+            InitializeControllerAndHisComponents();
         }
 
         private void InitializeDataBase()
@@ -175,6 +167,11 @@ namespace Keyboard_Trainer
         {
             controller.HardcoreMode = checkBoxHardcoreMode.Checked;
             TextBoxForTyping.Focus();
+        }
+
+        private void adminButton_Click(object sender, EventArgs e)
+        {
+            adminMenu.Show();
         }
     }
 }

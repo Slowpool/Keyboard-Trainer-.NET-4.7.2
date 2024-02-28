@@ -23,7 +23,7 @@ namespace Keyboard_Trainer
 
         public void Disable()
         {
-            form.FormBorderStyle = FormBorderStyle.Sizable;
+            form.FormBorderStyle = FormBorderStyle.FixedSingle;
             form.WindowState = FormWindowState.Normal;
             IsFullScreenNow = false;
         }

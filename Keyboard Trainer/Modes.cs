@@ -9,5 +9,6 @@
         Digits,
         OwnText,
         Characters,
+        Song,
     }
 }

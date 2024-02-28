@@ -70,15 +70,18 @@ namespace Keyboard_Trainer
 
         public void UploadNewText()
         {
-            string newText = dataBase.GetRandomText(Language) + ' ';
-            FullText.Clear();
-            FullText.Append(newText);
+            UploadNewText(dataBase.GetRandomText(Language));
         }
 
-        public void UploadNewText(string ownText)
+        public void UploadNewSong()
+        {
+            UploadNewText(dataBase.GetRandomSong(Language));
+        }
+
+        public void UploadNewText(string textForUploading)
         {
             FullText.Clear();
-            FullText.Append(ownText + ' ');
+            FullText.Append(textForUploading + ' ');
         }
 
         private int GetIndexOfLastAcceptableSpace()

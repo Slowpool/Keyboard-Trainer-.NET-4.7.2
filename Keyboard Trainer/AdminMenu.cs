@@ -1,0 +1,77 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Keyboard_Trainer
+{
+    public partial class AdminMenu : Form
+    {
+        private readonly DataParser dataParser;
+        
+
+        internal AdminMenu(DataBase dataBase)
+        {
+            InitializeComponent();
+            comboBoxTypeOfData.SelectedIndex = 0;
+            comboBoxLanguage.SelectedIndex = 0;
+            comboBoxAction.SelectedIndex = 0;
+            dataParser = new DataParser(dataBase);
+
+            
+        }
+
+        private void AdminMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Hide();
+            e.Cancel = true;
+        }
+
+        private void buttonExecute_Click(object sender, EventArgs e)
+        {
+            string action = comboBoxAction.Text;
+            string typeOfData = comboBoxTypeOfData.Text;
+            string language = comboBoxLanguage.Text;
+            dataParser.Act(action, typeOfData, language);
+        }
+
+        private void comboBoxAction_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBoxAction.Text)
+            {
+                case "Delete":
+                    buttonExecute.Text = "Execute";
+                    break;
+
+                case "Upload":
+                case "Re-Upload":
+                    buttonExecute.Text = "Choose " + FileOrDirectory() + " and execute";
+                    break;
+            }
+        }
+
+        private string FileOrDirectory()
+        {
+            switch (comboBoxTypeOfData.Text)
+            {
+                case "words":
+                    dataParser.TypeOfParsingData = TypesOfParsingData.File;
+                    return "file";
+
+                case "texts":
+                case "songs":
+                    dataParser.TypeOfParsingData = TypesOfParsingData.Directory;
+                    return "directory";
+
+                default:
+                    throw new InvalidOperationException();
+            }
+        }
+
+    }
+}

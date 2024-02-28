@@ -47,6 +47,10 @@ namespace Keyboard_Trainer
                 case Modes.OwnText:
                     HandleOwnTextOnce();
                     break;
+                case Modes.Song:
+                    text.UploadNewSong();
+                    break;
+#warning it doesn't work i think
                 case Modes.OneWordThreeTimes:
                     RefreshWord();
                     break;

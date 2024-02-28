@@ -37,6 +37,7 @@
             this.RefreshButton = new System.Windows.Forms.Button();
             this.FullScreenButton = new System.Windows.Forms.Button();
             this.PanelWithAllComponents = new System.Windows.Forms.Panel();
+            this.adminButton = new System.Windows.Forms.Button();
             this.checkBoxHardcoreMode = new System.Windows.Forms.CheckBox();
             this.PanelWithAllComponents.SuspendLayout();
             this.SuspendLayout();
@@ -77,7 +78,8 @@
             "\"Hello, dear diary!\" - said Amanda after working out. \"Nice!\"",
             "54773 19387 374 75 387 293 5984 17493 0639 390892 103",
             "Own text",
-            "& <~ [@/ -)! `(>@-:;; (.; <, \'{\'>}^/>}, ~<`!|@ {^,& #$% ?`\"/!-}(_@~- "});
+            "& <~ [@/ -)! `(>@-:;; (.; <, \'{\'>}^/>}, ~<`!|@ {^,& #$% ?`\"/!-}(_@~-",
+            "Song"});
             this.ModeComboBox.Location = new System.Drawing.Point(8, 376);
             this.ModeComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.ModeComboBox.Name = "ModeComboBox";
@@ -125,7 +127,7 @@
             // RefreshButton
             // 
             this.RefreshButton.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RefreshButton.Location = new System.Drawing.Point(20, 191);
+            this.RefreshButton.Location = new System.Drawing.Point(9, 191);
             this.RefreshButton.Margin = new System.Windows.Forms.Padding(4);
             this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Size = new System.Drawing.Size(174, 46);
@@ -147,6 +149,7 @@
             // 
             // PanelWithAllComponents
             // 
+            this.PanelWithAllComponents.Controls.Add(this.adminButton);
             this.PanelWithAllComponents.Controls.Add(this.checkBoxHardcoreMode);
             this.PanelWithAllComponents.Controls.Add(this.LabelOfOutputRequiringLine);
             this.PanelWithAllComponents.Controls.Add(this.ModeComboBox);
@@ -160,6 +163,17 @@
             this.PanelWithAllComponents.Name = "PanelWithAllComponents";
             this.PanelWithAllComponents.Size = new System.Drawing.Size(1075, 438);
             this.PanelWithAllComponents.TabIndex = 9;
+            // 
+            // adminButton
+            // 
+            this.adminButton.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.adminButton.Location = new System.Drawing.Point(894, 272);
+            this.adminButton.Name = "adminButton";
+            this.adminButton.Size = new System.Drawing.Size(174, 46);
+            this.adminButton.TabIndex = 10;
+            this.adminButton.Text = "Admin menu";
+            this.adminButton.UseVisualStyleBackColor = true;
+            this.adminButton.Click += new System.EventHandler(this.adminButton_Click);
             // 
             // checkBoxHardcoreMode
             // 
@@ -187,6 +201,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "KeyboardTrainer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Keyboard trainer";
             this.PanelWithAllComponents.ResumeLayout(false);
             this.PanelWithAllComponents.PerformLayout();
@@ -206,6 +221,7 @@
         private System.Windows.Forms.Button FullScreenButton;
         private System.Windows.Forms.Panel PanelWithAllComponents;
         private System.Windows.Forms.CheckBox checkBoxHardcoreMode;
+        private System.Windows.Forms.Button adminButton;
     }
 }
 
