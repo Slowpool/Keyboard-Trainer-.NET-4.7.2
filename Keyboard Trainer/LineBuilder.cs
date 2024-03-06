@@ -27,7 +27,7 @@ namespace Keyboard_Trainer
 
         private int CounterForThreeWordsMode { get; set; }
 
-        public LineBuilder(DataBase dataBase, Text text, int MaxLengthOfLine)
+        internal LineBuilder(DataBase dataBase, Text text, int MaxLengthOfLine)
         {
             this.dataBase = dataBase;
             this.text = text;

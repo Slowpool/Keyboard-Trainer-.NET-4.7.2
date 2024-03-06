@@ -61,9 +61,9 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CharactersGenerator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="IT-demon Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\CharactersGenerator.dll</HintPath>
+      <HintPath>..\..\IT-demon Library.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=7.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.7.0.1\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
@@ -111,10 +111,13 @@
     <Compile Include="AdminMenu.Designer.cs">
       <DependentUpon>AdminMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="CharacterChecker.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="DataBase.cs" />
     <Compile Include="DataParser.cs" />
     <Compile Include="ExtensionsDataParser.cs" />
+    <Compile Include="ExtensionsLanguages.cs" />
+    <Compile Include="ExtensionsTypesOfData.cs" />
     <Compile Include="FullScreen.cs" />
     <Compile Include="KeyboardTrainer.cs">
       <SubType>Form</SubType>
@@ -130,6 +133,7 @@
     <Compile Include="RequiredLine.cs" />
     <Compile Include="Text.cs" />
     <Compile Include="TypeLine.cs" />
+    <Compile Include="TypesOfData.cs" />
     <Compile Include="TypesOfParsingData.cs" />
     <EmbeddedResource Include="AdminMenu.resx">
       <DependentUpon>AdminMenu.cs</DependentUpon>

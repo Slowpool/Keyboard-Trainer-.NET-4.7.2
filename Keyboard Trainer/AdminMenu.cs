@@ -22,7 +22,6 @@ namespace Keyboard_Trainer
             comboBoxLanguage.SelectedIndex = 0;
             comboBoxAction.SelectedIndex = 0;
             dataParser = new DataParser(dataBase);
-
             
         }
 
@@ -35,8 +34,8 @@ namespace Keyboard_Trainer
         private void buttonExecute_Click(object sender, EventArgs e)
         {
             string action = comboBoxAction.Text;
-            string typeOfData = comboBoxTypeOfData.Text;
-            string language = comboBoxLanguage.Text;
+            TypesOfData typeOfData = comboBoxTypeOfData.Text.ToTypeOfData();
+            Languages language = comboBoxLanguage.Text.ToLanguage();
             dataParser.Act(action, typeOfData, language);
         }
 
@@ -72,6 +71,5 @@ namespace Keyboard_Trainer
                     throw new InvalidOperationException();
             }
         }
-
     }
 }

@@ -15,7 +15,7 @@ namespace Keyboard_Trainer
 
         private readonly int MaxLengthOfLine;
 
-        public Text(DataBase dataBase, int MaxLengthOfLine)
+        internal Text(DataBase dataBase, int MaxLengthOfLine)
         {
             this.dataBase = dataBase;
             this.MaxLengthOfLine = MaxLengthOfLine;
@@ -24,7 +24,7 @@ namespace Keyboard_Trainer
         }
 
         private Languages language;
-        public Languages Language
+        internal Languages Language
         {
             get => language;
             set
@@ -68,17 +68,17 @@ namespace Keyboard_Trainer
             RemoveLineFromFullText();
         }
 
-        public void UploadNewText()
+        internal void UploadNewText()
         {
             UploadNewText(dataBase.GetRandomText(Language));
         }
 
-        public void UploadNewSong()
+        internal void UploadNewSong()
         {
             UploadNewText(dataBase.GetRandomSong(Language));
         }
 
-        public void UploadNewText(string textForUploading)
+        internal void UploadNewText(string textForUploading)
         {
             FullText.Clear();
             FullText.Append(textForUploading + ' ');
@@ -95,7 +95,7 @@ namespace Keyboard_Trainer
             FullText.Remove(0, line.Length);
         }
 
-        public string GetNextLine()
+        internal string GetNextLine()
         {
             // this cycle should be endless
             foreach(string line in Lines)

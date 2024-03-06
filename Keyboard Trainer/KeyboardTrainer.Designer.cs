@@ -79,7 +79,7 @@
             "54773 19387 374 75 387 293 5984 17493 0639 390892 103",
             "Own text",
             "& <~ [@/ -)! `(>@-:;; (.; <, \'{\'>}^/>}, ~<`!|@ {^,& #$% ?`\"/!-}(_@~-",
-            "Song"});
+            "You\'re burning and shining like a meteor"});
             this.ModeComboBox.Location = new System.Drawing.Point(8, 376);
             this.ModeComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.ModeComboBox.Name = "ModeComboBox";

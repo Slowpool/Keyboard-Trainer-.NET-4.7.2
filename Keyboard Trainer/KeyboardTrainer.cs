@@ -134,6 +134,12 @@ namespace Keyboard_Trainer
                 return true;
             }
 
+#warning temporarily
+            if (Mode == Modes.Song)
+            {
+                return true;
+            }
+
             return false;
         }
 

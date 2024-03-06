@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Keyboard_Trainer
 {
-    public class DataBase
+    internal class DataBase
     {
         private readonly MySqlConnection connection;
         private readonly Random rnd;
@@ -18,12 +18,12 @@ namespace Keyboard_Trainer
         private const string CountRowsCommandPattern = "SELECT COUNT(*) FROM {0}_{1};";
         private const string RandomRowCommandPattern = "SELECT {0} FROM {1}_{0} WHERE id = {2};";
 
-        private const string insertPattern = "INSERT INTO {0}_{1} VALUES ";
+        private const string insertIntoPattern = "INSERT INTO {0} VALUES ";
         private const string insertedValuePattern = "(NULL, '{0}')";
 
         private const string deleteFromPattern = "DELETE FROM {0}_{1};";
 
-        public DataBase(string connectionString)
+        internal DataBase(string connectionString)
         {
             connection = new MySqlConnection(connectionString);
             rnd = new Random();
@@ -86,12 +86,12 @@ namespace Keyboard_Trainer
             return rowsAmount;
         }
 
-        public string GetRandomWord(Languages language)
+        internal string GetRandomWord(Languages language)
         {
             return GetRandomRow("word", language);
         }
 
-        public string GetRandomText(Languages language)
+        internal string GetRandomText(Languages language)
         {
             return GetRandomRow("text", language);
         }
@@ -132,13 +132,16 @@ namespace Keyboard_Trainer
             return row;
         }
 
-        internal void Delete(string typeOfData, string language)
+        internal void Delete(TypesOfData typeOfData, Languages language)
         {
-            string command = string.Format(deleteFromPattern, language, typeOfData);
-            connection.Open();
-            Command = new MySqlCommand(command, connection);
-            connection.Close();
+//#error there's error somewhere here
+            string command = string.Format(deleteFromPattern, language.NewToString(), typeOfData.NewToString());
+            TryExecuteAndDisplayInCaseOfError(command, "Deleting error");
+        }
 
+        private void TryExecuteAndDisplayInCaseOfError(string command, string error)
+        {
+            Command = new MySqlCommand(command, connection);
             try
             {
                 connection.Open();
@@ -146,12 +149,29 @@ namespace Keyboard_Trainer
             }
             catch (Exception e)
             {
-                MessageBox.Show("Deleting error: " + e.Message);
+                MessageBox.Show(caption: "The command wasn't executed",
+                                text: error + "\r\nIn details: " + e.Message,
+                                buttons: MessageBoxButtons.OK,
+                                icon: MessageBoxIcon.Error);
             }
             finally
             {
                 connection.Close();
             }
         }
+
+        internal void InsertRow(string text, string table_name)
+        {
+            string command = string.Format(insertIntoPattern, table_name);
+            command += string.Format(insertedValuePattern, text) + ";";
+            TryExecuteAndDisplayInCaseOfError(command, "inserting error");
+        }
+
+        private void RefreshAutoIncrement(string table_name)
+        {
+            string command = $"ALTER TABLE {table_name} AUTO_INCREMENT = 0;";
+            TryExecuteAndDisplayInCaseOfError(command, "AUTO_INCREMENT property setting error");
+        }
+
     }
 }
