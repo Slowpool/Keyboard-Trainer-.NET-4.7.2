@@ -12,6 +12,7 @@ namespace Keyboard_Trainer
         private readonly Random rnd;
         private readonly Dictionary<Languages, int> WordsAmount;
         private readonly Dictionary<Languages, int> TextsAmount;
+        private readonly Dictionary<Languages, int> SongsAmount;
         private readonly Dictionary<string, Dictionary<Languages, int>> KindsOfData;
         private MySqlCommand Command;
 
@@ -35,7 +36,7 @@ namespace Keyboard_Trainer
                 { "text", TextsAmount },
             };
             FillLanguages();
-            CountWordsAndTexts();
+            CountRowsForAll();
         }
 
         private void FillLanguages()
@@ -49,7 +50,7 @@ namespace Keyboard_Trainer
             }
         }
 
-        private void CountWordsAndTexts()
+        private void CountRowsForAll()
         {
             foreach (var languageAndKind in KindsOfData)
             {
@@ -77,7 +78,8 @@ namespace Keyboard_Trainer
             }
             catch
             {
-                MessageBox.Show("Failed to count rows amount in db", "The command wasn't executed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorDisplayer.ShowError(caption: "Failed to count rows amount in db",
+                                         text: "The command wasn't executed");
             }
             finally
             {
@@ -120,10 +122,8 @@ namespace Keyboard_Trainer
             }
             catch
             {
-                MessageBox.Show(caption: "The command wasn't executed",
-                                text: "Failed to extracting random word from db",
-                                buttons: MessageBoxButtons.OK,
-                                icon: MessageBoxIcon.Error);
+                ErrorDisplayer.ShowError(caption: "The command wasn't executed",
+                                text: "Failed to extracting random word from db");
             }
             finally
             {
@@ -149,10 +149,8 @@ namespace Keyboard_Trainer
             }
             catch (Exception e)
             {
-                MessageBox.Show(caption: "The command wasn't executed",
-                                text: error + "\r\nIn details: " + e.Message,
-                                buttons: MessageBoxButtons.OK,
-                                icon: MessageBoxIcon.Error);
+                ErrorDisplayer.ShowError(caption: "The command wasn't executed",
+                                text: error + "\r\nIn details: " + e.Message);
             }
             finally
             {

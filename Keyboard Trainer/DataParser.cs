@@ -165,7 +165,8 @@ namespace Keyboard_Trainer
                 }
                 else
                 {
-                    MessageBox.Show("too long text");
+                    ErrorDisplayer.ShowError(caption: "Incorrect text length",
+                                            text: $"text in file {file.Name} was too long or empty");
                 }
                 textReader.Close();
             }
