@@ -10,10 +10,12 @@ namespace Keyboard_Trainer
     {
         private readonly MySqlConnection connection;
         private readonly Random rnd;
+#warning hardcoding
         private readonly Dictionary<Languages, int> WordsAmount;
         private readonly Dictionary<Languages, int> TextsAmount;
         private readonly Dictionary<Languages, int> SongsAmount;
         private readonly Dictionary<string, Dictionary<Languages, int>> KindsOfData;
+
         private MySqlCommand Command;
 
         private const string CountRowsCommandPattern = "SELECT COUNT(*) FROM {0}_{1};";
@@ -22,18 +24,22 @@ namespace Keyboard_Trainer
         private const string insertIntoPattern = "INSERT INTO {0} VALUES ";
         private const string insertedValuePattern = "(NULL, '{0}')";
 
-        private const string deleteFromPattern = "DELETE FROM {0}_{1};";
+        private const string deleteFromPattern = "DELETE FROM {0};";
 
         internal DataBase(string connectionString)
         {
             connection = new MySqlConnection(connectionString);
             rnd = new Random();
+#warning hardcoding
             WordsAmount = new Dictionary<Languages, int>();
             TextsAmount = new Dictionary<Languages, int>();
+            SongsAmount = new Dictionary<Languages, int>();
             KindsOfData = new Dictionary<string, Dictionary<Languages, int>>
             {
+                #warning hardcoding
                 { "word", WordsAmount },
                 { "text", TextsAmount },
+                { "song", SongsAmount },
             };
             FillLanguages();
             CountRowsForAll();
@@ -132,11 +138,12 @@ namespace Keyboard_Trainer
             return row;
         }
 
-        internal void Delete(TypesOfData typeOfData, Languages language)
+        internal void Delete(string table_name)
         {
 //#error there's error somewhere here
-            string command = string.Format(deleteFromPattern, language.NewToString(), typeOfData.NewToString());
+            string command = string.Format(deleteFromPattern, table_name);
             TryExecuteAndDisplayInCaseOfError(command, "Deleting error");
+            ResetAutoIncrement(table_name);
         }
 
         private void TryExecuteAndDisplayInCaseOfError(string command, string error)
@@ -165,11 +172,15 @@ namespace Keyboard_Trainer
             TryExecuteAndDisplayInCaseOfError(command, "inserting error");
         }
 
-        private void RefreshAutoIncrement(string table_name)
+        internal void InsertRows(string[] buffer, string table_name)
+        {
+            string command = string.Format(insertIntoPattern, );
+        }
+
+        private void ResetAutoIncrement(string table_name)
         {
             string command = $"ALTER TABLE {table_name} AUTO_INCREMENT = 0;";
             TryExecuteAndDisplayInCaseOfError(command, "AUTO_INCREMENT property setting error");
         }
-
     }
 }

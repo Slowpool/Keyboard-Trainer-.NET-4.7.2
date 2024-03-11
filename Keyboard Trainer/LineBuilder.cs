@@ -82,24 +82,34 @@ namespace Keyboard_Trainer
                 case Modes.RepetitiveWord:
                     BuildRepetitiveWord();
                     break;
+
                 case Modes.SetOfWords:
                     BuildSetOfWords();
                     break;
+
                     #warning i didn't implement it
                 case Modes.OneWordThreeTimes:
                     OneWordThreeTimesMode();
                     break;
+
                 case Modes.Text:
                     TextMode();
                     break;
+
                 case Modes.Digits:
                     BuildDigits();
                     break;
+
                 case Modes.OwnText:
                     OwnTextMode();
                     break;
+
                 case Modes.Characters:
                     BuildCharacters();
+                    break;
+
+                case Modes.Song:
+                    BuildSong();
                     break;
                 default:
                     throw new Exception("Mode wasn't handled");
@@ -201,11 +211,15 @@ namespace Keyboard_Trainer
         }
 
         private void BuildCharacters()
-        {
-                                                        // -1 was added for space at the end
+        {                                                         // -1 was added for space at the end
             string characters = Generator.GenerateCharactersWithSpace(MaxLengthOfLine - 1);
             characters = GuaranteeSpaceAtTheEnd(characters);
             BuiltLine = characters;
+        }
+
+        private void BuildSong()
+        {
+            BuiltLine = text.GetNextLine().Replace('\n', ' ');
         }
 
         private string GuaranteeSpaceAtTheEnd(string @string)

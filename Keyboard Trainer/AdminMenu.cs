@@ -12,17 +12,15 @@ namespace Keyboard_Trainer
 {
     public partial class AdminMenu : Form
     {
-        private readonly DataParser dataParser;
+        private readonly DataUploader dataUploader;
         
-
         internal AdminMenu(DataBase dataBase)
         {
             InitializeComponent();
             comboBoxTypeOfData.SelectedIndex = 0;
             comboBoxLanguage.SelectedIndex = 0;
             comboBoxAction.SelectedIndex = 0;
-            dataParser = new DataParser(dataBase);
-            
+            dataUploader = new DataUploader(dataBase);
         }
 
         private void AdminMenu_FormClosing(object sender, FormClosingEventArgs e)
@@ -36,7 +34,7 @@ namespace Keyboard_Trainer
             string action = comboBoxAction.Text;
             TypesOfData typeOfData = comboBoxTypeOfData.Text.ToTypeOfData();
             Languages language = comboBoxLanguage.Text.ToLanguage();
-            dataParser.Act(action, typeOfData, language);
+            dataUploader.Act(action, typeOfData, language);
         }
 
         private void comboBoxAction_SelectedIndexChanged(object sender, EventArgs e)
@@ -59,12 +57,12 @@ namespace Keyboard_Trainer
             switch (comboBoxTypeOfData.Text)
             {
                 case "words":
-                    dataParser.TypeOfParsingData = TypesOfParsingData.File;
+                    dataUploader.TypeOfParsingData = TypesOfParsingData.File;
                     return "file";
 
                 case "texts":
                 case "songs":
-                    dataParser.TypeOfParsingData = TypesOfParsingData.Directory;
+                    dataUploader.TypeOfParsingData = TypesOfParsingData.Directory;
                     return "directory";
 
                 default:

@@ -63,7 +63,7 @@ namespace Keyboard_Trainer
                 return;
             }
 
-            int LengthOfLine = GetIndexOfLastAcceptableSpace() + 1;
+            int LengthOfLine = IndexOfNextLineElseLastAcceptableSpace() + 1;
             line = FullText.ToString().Substring(0, LengthOfLine);
             RemoveLineFromFullText();
         }
@@ -84,10 +84,18 @@ namespace Keyboard_Trainer
             FullText.Append(textForUploading + ' ');
         }
 
-        private int GetIndexOfLastAcceptableSpace()
+        private int IndexOfNextLineElseLastAcceptableSpace()
         {
             string lineOfMaxLength = FullText.ToString().Substring(0, MaxLengthOfLine);
-            return lineOfMaxLength.LastIndexOf(' ');
+            int indexOfNextLine = lineOfMaxLength.IndexOf('\n');
+            if(indexOfNextLine == -1)
+            {
+                return lineOfMaxLength.LastIndexOf(' ');
+            }
+            else
+            {
+                return indexOfNextLine;
+            }
         }
 
         private void RemoveLineFromFullText()
@@ -97,12 +105,12 @@ namespace Keyboard_Trainer
 
         internal string GetNextLine()
         {
-            // this cycle should be endless
+            // this cycle must be endless
             foreach(string line in Lines)
             {
                 return line;
             }
-            // unreachable code as i think
+            // this code must be unreachable
             throw new Exception("lines ended");
         }
     }

@@ -4,17 +4,17 @@ using System.Windows.Forms;
 
 namespace Keyboard_Trainer
 {
-    public partial class KeyboardTrainer : Form
+    internal partial class KeyboardTrainer : Form
     {
         private Controller controller;
         private DataBase dataBase;
         private FullScreen fullScreen;
         private AdminMenu adminMenu;
 
-        private const int MaxLengthOfLine = 80;
+        private const int MAX_LINE_LENGTH = 80;
 
         private Modes mode;
-        public Modes Mode
+        internal Modes Mode
         {
             get => mode;
             set
@@ -24,7 +24,7 @@ namespace Keyboard_Trainer
             }
         }
 
-        public Languages Language
+        internal Languages Language
         {
             set
             {
@@ -41,7 +41,7 @@ namespace Keyboard_Trainer
             }
         }
 
-        public KeyboardTrainer()
+        internal KeyboardTrainer()
         {
             InitializeComponent();
             LabelOfOutputRequiringLine.UseMnemonic = false;
@@ -75,8 +75,8 @@ namespace Keyboard_Trainer
         {
             var requiredLine = new RequiredLine(LabelOfOutputRequiringLine);
             var typeLine = new TypeLine(TextBoxForTyping);
-            var text = new Text(dataBase, MaxLengthOfLine);
-            var lineBuilder = new LineBuilder(dataBase, text, MaxLengthOfLine);
+            var text = new Text(dataBase, MAX_LINE_LENGTH);
+            var lineBuilder = new LineBuilder(dataBase, text, MAX_LINE_LENGTH);
             controller = new Controller(requiredLine, typeLine, lineBuilder);
         }
 
@@ -130,12 +130,6 @@ namespace Keyboard_Trainer
             }
 
             if (Mode == Modes.Characters)
-            {
-                return true;
-            }
-
-#warning temporarily
-            if (Mode == Modes.Song)
             {
                 return true;
             }
