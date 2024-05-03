@@ -62,6 +62,7 @@ namespace Keyboard_Trainer
                     {
                         dataBase.Delete(table_name);
                     }
+                    MessageBox.Show("Successfull removing");
                     break;
 
                 case "Upload":
@@ -118,7 +119,7 @@ namespace Keyboard_Trainer
                 do
                 {
                     wordsDeader.FillBufferWithCorrectWords(buffer);
-#error does it work?
+#warning does it work?
                     dataBase.InsertRows(buffer, table_name);
                     buffer.Clear();
                     
@@ -163,11 +164,12 @@ namespace Keyboard_Trainer
 
                 if (TextForPringHandler.IsCorrectTextLength(text))
                 {
+
                     dataBase.InsertRow(text, table_name);
                 }
                 else
                 {
-                    ErrorDisplayer.ShowError(caption: "Incorrect text length",
+                    ErrorsDisplayer.ShowError(caption: "Incorrect text length",
                                             text: $"text in file {file.Name} was too long or empty");
                 }
                 textReader.Close();

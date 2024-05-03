@@ -84,7 +84,7 @@ namespace Keyboard_Trainer
             }
             catch
             {
-                ErrorDisplayer.ShowError(caption: "Failed to count rows amount in db",
+                ErrorsDisplayer.ShowError(caption: "Failed to count rows amount in db",
                                          text: "The command wasn't executed");
             }
             finally
@@ -128,7 +128,7 @@ namespace Keyboard_Trainer
             }
             catch
             {
-                ErrorDisplayer.ShowError(caption: "The command wasn't executed",
+                ErrorsDisplayer.ShowError(caption: "The command wasn't executed",
                                 text: "Failed to extracting random word from db");
             }
             finally
@@ -156,7 +156,7 @@ namespace Keyboard_Trainer
             }
             catch (Exception e)
             {
-                ErrorDisplayer.ShowError(caption: "The command wasn't executed",
+                ErrorsDisplayer.ShowError(caption: "The command wasn't executed",
                                 text: error + "\r\nIn details: " + e.Message);
             }
             finally
@@ -174,7 +174,7 @@ namespace Keyboard_Trainer
 
         internal void InsertRows(string[] buffer, string table_name)
         {
-            string command = string.Format(insertIntoPattern, );
+            //string command = string.Format(insertIntoPattern, );
         }
 
         private void ResetAutoIncrement(string table_name)

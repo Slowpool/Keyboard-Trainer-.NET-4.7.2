@@ -2,7 +2,7 @@
 
 namespace Keyboard_Trainer
 {
-    internal static class ErrorDisplayer
+    internal static class ErrorsDisplayer
     {
         internal static void ShowError(string caption, string text)
         {

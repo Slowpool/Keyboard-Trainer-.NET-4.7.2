@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace Keyboard_Trainer
 {
@@ -10,8 +11,10 @@ namespace Keyboard_Trainer
 
         private readonly LineBuilder lineBuilder;
 
-        public readonly Color UsualColor = Color.FromArgb(255, 255, 255); // white
-        public readonly Color MistakeColor = Color.FromArgb(255, 255, 0); // yellow
+        private readonly Walkthrough walkthrough;
+
+        public readonly Color UsualColor = Color.White;
+        public readonly Color MistakeColor = Color.Yellow;
 
         private bool hardcoreMode;
         public bool HardcoreMode
@@ -32,11 +35,12 @@ namespace Keyboard_Trainer
 
         public bool MistakeState => requiredLine.ForeColor == MistakeColor;
 
-        public Controller(RequiredLine requiredLine, TypeLine typeLine, LineBuilder lineBuilder)
+        public Controller(RequiredLine requiredLine, TypeLine typeLine, LineBuilder lineBuilder, Walkthrough walkthrough)
         {
             this.requiredLine = requiredLine;
             this.typeLine = typeLine;
             this.lineBuilder = lineBuilder;
+            this.walkthrough = walkthrough;
         }
 
         public void ChangeMode(Modes Mode)
@@ -115,6 +119,11 @@ namespace Keyboard_Trainer
             {
                 requiredLine.ForeColor = MistakeColor;
             }
+        }
+
+        internal void ChangeWalkthroughTo(bool enabled)
+        {
+            walkthrough.Enabled = enabled;
         }
     }
 }

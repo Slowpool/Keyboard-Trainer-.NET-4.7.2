@@ -89,6 +89,7 @@ namespace Keyboard_Trainer
                     text = text.Replace("\r\n", "\n");
                     text = RemoveKeywords(text);
                     text = ClearRepeatedChars(text, '\n');
+                    text = TruncateNextLines(text);
                     break;
 
                 default:
@@ -133,6 +134,15 @@ namespace Keyboard_Trainer
             while (text.IndexOf(targetSubstring) != -1)
             {
                 text = text.Replace(targetSubstring, targetCharacter.ToString());
+            }
+            return text;
+        }
+
+        internal static string TruncateNextLines(string text)
+        {
+            while (text[0] == '\n')
+            {
+                text = text.Substring(1);
             }
             return text;
         }

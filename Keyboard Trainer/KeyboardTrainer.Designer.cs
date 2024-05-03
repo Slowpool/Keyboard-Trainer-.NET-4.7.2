@@ -39,7 +39,10 @@
             this.PanelWithAllComponents = new System.Windows.Forms.Panel();
             this.adminButton = new System.Windows.Forms.Button();
             this.checkBoxHardcoreMode = new System.Windows.Forms.CheckBox();
+            this.checkBoxWalkthrough = new System.Windows.Forms.CheckBox();
+            this.numericUpDownWalkthroughCounter = new System.Windows.Forms.NumericUpDown();
             this.PanelWithAllComponents.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWalkthroughCounter)).BeginInit();
             this.SuspendLayout();
             // 
             // TextBoxForTyping
@@ -149,6 +152,8 @@
             // 
             // PanelWithAllComponents
             // 
+            this.PanelWithAllComponents.Controls.Add(this.numericUpDownWalkthroughCounter);
+            this.PanelWithAllComponents.Controls.Add(this.checkBoxWalkthrough);
             this.PanelWithAllComponents.Controls.Add(this.adminButton);
             this.PanelWithAllComponents.Controls.Add(this.checkBoxHardcoreMode);
             this.PanelWithAllComponents.Controls.Add(this.LabelOfOutputRequiringLine);
@@ -188,6 +193,41 @@
             this.checkBoxHardcoreMode.UseVisualStyleBackColor = true;
             this.checkBoxHardcoreMode.CheckedChanged += new System.EventHandler(this.checkBoxHardcoreMode_CheckedChanged);
             // 
+            // checkBox1
+            // 
+            this.checkBoxWalkthrough.AutoSize = true;
+            this.checkBoxWalkthrough.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxWalkthrough.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.checkBoxWalkthrough.Location = new System.Drawing.Point(9, 280);
+            this.checkBoxWalkthrough.Name = "checkBox1";
+            this.checkBoxWalkthrough.Size = new System.Drawing.Size(174, 32);
+            this.checkBoxWalkthrough.TabIndex = 12;
+            this.checkBoxWalkthrough.Text = "Walkthrough";
+            this.checkBoxWalkthrough.UseVisualStyleBackColor = true;
+            this.checkBoxWalkthrough.CheckedChanged += new System.EventHandler(this.checkBoxWalkthrough_CheckedChanged);
+            // 
+            // numericUpDownWalkthroughCounter
+            // 
+            this.numericUpDownWalkthroughCounter.Location = new System.Drawing.Point(224, 280);
+            this.numericUpDownWalkthroughCounter.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownWalkthroughCounter.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownWalkthroughCounter.Name = "numericUpDownWalkthroughCounter";
+            this.numericUpDownWalkthroughCounter.Size = new System.Drawing.Size(58, 35);
+            this.numericUpDownWalkthroughCounter.TabIndex = 13;
+            this.numericUpDownWalkthroughCounter.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // KeyboardTrainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 27F);
@@ -205,6 +245,7 @@
             this.Text = "Keyboard trainer";
             this.PanelWithAllComponents.ResumeLayout(false);
             this.PanelWithAllComponents.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWalkthroughCounter)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -222,6 +263,8 @@
         private System.Windows.Forms.Panel PanelWithAllComponents;
         private System.Windows.Forms.CheckBox checkBoxHardcoreMode;
         private System.Windows.Forms.Button adminButton;
+        private System.Windows.Forms.NumericUpDown numericUpDownWalkthroughCounter;
+        private System.Windows.Forms.CheckBox checkBoxWalkthrough;
     }
 }
 

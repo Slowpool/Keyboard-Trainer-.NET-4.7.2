@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -116,7 +116,7 @@
     <Compile Include="DataBase.cs" />
     <Compile Include="TextForPringHandler.cs" />
     <Compile Include="DataUploader.cs" />
-    <Compile Include="ErrorDisplayer.cs" />
+    <Compile Include="ErrorsDisplayer.cs" />
     <Compile Include="ExtensionsDataParser.cs" />
     <Compile Include="ExtensionsLanguages.cs" />
     <Compile Include="ExtensionsTypesOfData.cs" />
@@ -137,6 +137,7 @@
     <Compile Include="TypeLine.cs" />
     <Compile Include="TypesOfData.cs" />
     <Compile Include="TypesOfParsingData.cs" />
+    <Compile Include="Walkthrough.cs" />
     <EmbeddedResource Include="AdminMenu.resx">
       <DependentUpon>AdminMenu.cs</DependentUpon>
     </EmbeddedResource>

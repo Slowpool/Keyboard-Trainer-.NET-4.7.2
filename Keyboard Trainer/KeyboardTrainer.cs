@@ -13,6 +13,7 @@ namespace Keyboard_Trainer
 
         private const int MAX_LINE_LENGTH = 80;
 
+
         private Modes mode;
         internal Modes Mode
         {
@@ -77,7 +78,8 @@ namespace Keyboard_Trainer
             var typeLine = new TypeLine(TextBoxForTyping);
             var text = new Text(dataBase, MAX_LINE_LENGTH);
             var lineBuilder = new LineBuilder(dataBase, text, MAX_LINE_LENGTH);
-            controller = new Controller(requiredLine, typeLine, lineBuilder);
+            var walkthrough = new Walkthrough(ModeComboBox);
+            controller = new Controller(requiredLine, typeLine, lineBuilder, walkthrough);
         }
 
         private void InitializeMode()
@@ -172,6 +174,12 @@ namespace Keyboard_Trainer
         private void adminButton_Click(object sender, EventArgs e)
         {
             adminMenu.Show();
+        }
+
+        private void checkBoxWalkthrough_CheckedChanged(object sender, EventArgs e)
+        {
+            numericUpDownWalkthroughCounter.Enabled = checkBoxWalkthrough.Enabled;
+            controller.ChangeWalkthroughTo(checkBoxWalkthrough.Enabled);
         }
     }
 }
