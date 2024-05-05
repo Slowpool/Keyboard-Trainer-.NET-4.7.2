@@ -35,6 +35,14 @@ namespace Keyboard_Trainer
 
         public bool MistakeState => requiredLine.ForeColor == MistakeColor;
 
+        internal int TargetLinesNumberForWalkthrough
+        {
+            set
+            {
+                walkthrough.TargetNumberOfLines = value;
+            }
+        }
+
         public Controller(RequiredLine requiredLine, TypeLine typeLine, LineBuilder lineBuilder, Walkthrough walkthrough)
         {
             this.requiredLine = requiredLine;
@@ -57,7 +65,7 @@ namespace Keyboard_Trainer
 
         private void RefreshLines()
         {
-            ClearTypeLine();
+            typeLine.Clear();
             DisplayNextLine();
         }
 
@@ -67,17 +75,11 @@ namespace Keyboard_Trainer
             requiredLine.SetNextRequiredLine(nextLine);
         }
 
-        public void ClearTypeLine()
-        {
-            typeLine.Clear();
-        }
-
         public void HandleEditedTypingLine()
         {
-            string @string = typeLine.TypingString;
-            if (IsCorrectSubstring(@string))
+            if (IsCorrectSubstring(typeLine.TypingString))
             {
-                HandleCorrectString(@string);
+                HandleCorrectString(typeLine.TypingString);
             }
             else
             {
@@ -93,8 +95,13 @@ namespace Keyboard_Trainer
         private void HandleCorrectString(string @string)
         {
             SetUsualState();
-            if (IsFinalLine(@string))
+            if (IsCompletedLine(@string))
             {
+# warning i didn't finish it
+                if (walkthrough.Enabled)
+                {
+                    walkthrough.PlusLine();
+                }
                 RefreshLines();
             }
         }
@@ -104,7 +111,7 @@ namespace Keyboard_Trainer
             requiredLine.ForeColor = UsualColor;
         }
 
-        private bool IsFinalLine(string line)
+        private bool IsCompletedLine(string line)
         {
             return requiredLine.IsFinalLine(line);
         }
@@ -121,9 +128,14 @@ namespace Keyboard_Trainer
             }
         }
 
-        internal void ChangeWalkthroughTo(bool enabled)
+        internal void StopWalkthrough()
         {
-            walkthrough.Enabled = enabled;
+            walkthrough.Enabled = false;
+        }
+
+        internal void NewWalkthrough(int targetNumberOfLines)
+        {
+            walkthrough.Create(targetNumberOfLines);
         }
     }
 }

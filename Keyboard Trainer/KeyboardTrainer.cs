@@ -13,7 +13,6 @@ namespace Keyboard_Trainer
 
         private const int MAX_LINE_LENGTH = 80;
 
-
         private Modes mode;
         internal Modes Mode
         {
@@ -178,8 +177,14 @@ namespace Keyboard_Trainer
 
         private void checkBoxWalkthrough_CheckedChanged(object sender, EventArgs e)
         {
-            numericUpDownWalkthroughCounter.Enabled = checkBoxWalkthrough.Enabled;
-            controller.ChangeWalkthroughTo(checkBoxWalkthrough.Enabled);
+            if (checkBoxWalkthrough.Checked)
+            {
+                controller.NewWalkthrough((int)numericUpDownWalkthroughLinesNumber.Value);
+            }
+            else
+            {
+                controller.StopWalkthrough();
+            }
         }
     }
 }

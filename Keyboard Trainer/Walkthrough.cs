@@ -10,35 +10,87 @@ namespace Keyboard_Trainer
     internal class Walkthrough
     {
         private readonly ComboBox ModeComboBox;
+        private WalkthroughCases LastResult { get; set; }
 
-        private bool Enabled
+        private bool enabled;
+        internal bool Enabled
         {
+            get => enabled;
             set
             {
-                if (value)
+                enabled = value;
+                if (!enabled)
                 {
-                    LineCounter = 0;
-                    ModeCounter = 0;
-
+                    Reset();
                 }
             }
         }
 
-        private int LineCounter { get; set; }
-        private int ModeCounter { get; set; }
+        private int lineCounter;
+        internal int LineCounter
+        {
+            get => lineCounter;
+            set
+            {
+                lineCounter = value;
+                if (lineCounter == TargetNumberOfLines)
+                {
+                    CurrentModeIndex++;
+                    lineCounter = 0;
+                }
+                else
+                {
+                    LastResult = WalkthroughCases.NextLine;
+                }
+            }
+        }
 
-        internal int TargetNumberOfLines
+        private int currentModeIndex;
+        private int CurrentModeIndex
+        {
+            get => currentModeIndex;
+            set
+            {
+                currentModeIndex = value;
+                if (ModesForWalkthrough.Count == currentModeIndex)
+                {
+                    LastResult = WalkthroughCases.End;
+                    Reset();
+                }
+                else
+                {
+                    LastResult = WalkthroughCases.NextMode;
+                }
+            }
+        }
+
+        internal int TargetNumberOfLines { get; set; }
 #warning hardcoding
         private readonly List<int> ModesForWalkthrough = new List<int> { 0, 1,  3, 4,  6 };
 
         public Walkthrough(ComboBox ModeComboBox)
         {
             this.ModeComboBox = ModeComboBox;
-            LineCounter = 0;
-            ModeCounter = 0;
+            Reset();
         }
 
+        internal void Reset()
+        {
+            LineCounter = 0;
+            CurrentModeIndex = 0;
+        }
 
+        internal void Create(int targetNumberOfLines)
+        {
+            Reset();
+            ModeComboBox.SelectedIndex = CurrentModeIndex;
+            TargetNumberOfLines = targetNumberOfLines;
+        }
 
+        internal WalkthroughCases PlusLine()
+        {
+            LineCounter++;
+            return LastResult;
+        }
     }
 }

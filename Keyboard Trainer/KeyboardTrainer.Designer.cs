@@ -37,12 +37,12 @@
             this.RefreshButton = new System.Windows.Forms.Button();
             this.FullScreenButton = new System.Windows.Forms.Button();
             this.PanelWithAllComponents = new System.Windows.Forms.Panel();
+            this.numericUpDownWalkthroughLinesNumber = new System.Windows.Forms.NumericUpDown();
+            this.checkBoxWalkthrough = new System.Windows.Forms.CheckBox();
             this.adminButton = new System.Windows.Forms.Button();
             this.checkBoxHardcoreMode = new System.Windows.Forms.CheckBox();
-            this.checkBoxWalkthrough = new System.Windows.Forms.CheckBox();
-            this.numericUpDownWalkthroughCounter = new System.Windows.Forms.NumericUpDown();
             this.PanelWithAllComponents.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWalkthroughCounter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWalkthroughLinesNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // TextBoxForTyping
@@ -152,7 +152,7 @@
             // 
             // PanelWithAllComponents
             // 
-            this.PanelWithAllComponents.Controls.Add(this.numericUpDownWalkthroughCounter);
+            this.PanelWithAllComponents.Controls.Add(this.numericUpDownWalkthroughLinesNumber);
             this.PanelWithAllComponents.Controls.Add(this.checkBoxWalkthrough);
             this.PanelWithAllComponents.Controls.Add(this.adminButton);
             this.PanelWithAllComponents.Controls.Add(this.checkBoxHardcoreMode);
@@ -166,8 +166,43 @@
             this.PanelWithAllComponents.Controls.Add(this.LanguageComboBox);
             this.PanelWithAllComponents.Location = new System.Drawing.Point(12, 12);
             this.PanelWithAllComponents.Name = "PanelWithAllComponents";
-            this.PanelWithAllComponents.Size = new System.Drawing.Size(1075, 438);
+            this.PanelWithAllComponents.Size = new System.Drawing.Size(1075, 503);
             this.PanelWithAllComponents.TabIndex = 9;
+            // 
+            // numericUpDownWalkthroughLinesNumber
+            // 
+            this.numericUpDownWalkthroughLinesNumber.Location = new System.Drawing.Point(410, 434);
+            this.numericUpDownWalkthroughLinesNumber.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDownWalkthroughLinesNumber.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownWalkthroughLinesNumber.Name = "numericUpDownWalkthroughLinesNumber";
+            this.numericUpDownWalkthroughLinesNumber.Size = new System.Drawing.Size(47, 35);
+            this.numericUpDownWalkthroughLinesNumber.TabIndex = 13;
+            this.numericUpDownWalkthroughLinesNumber.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // checkBoxWalkthrough
+            // 
+            this.checkBoxWalkthrough.AutoSize = true;
+            this.checkBoxWalkthrough.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxWalkthrough.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.checkBoxWalkthrough.Location = new System.Drawing.Point(6, 434);
+            this.checkBoxWalkthrough.Name = "checkBoxWalkthrough";
+            this.checkBoxWalkthrough.Size = new System.Drawing.Size(408, 32);
+            this.checkBoxWalkthrough.TabIndex = 12;
+            this.checkBoxWalkthrough.Text = "Walkthrough, number of lines:";
+            this.checkBoxWalkthrough.UseVisualStyleBackColor = true;
+            this.checkBoxWalkthrough.CheckedChanged += new System.EventHandler(this.checkBoxWalkthrough_CheckedChanged);
             // 
             // adminButton
             // 
@@ -193,41 +228,6 @@
             this.checkBoxHardcoreMode.UseVisualStyleBackColor = true;
             this.checkBoxHardcoreMode.CheckedChanged += new System.EventHandler(this.checkBoxHardcoreMode_CheckedChanged);
             // 
-            // checkBox1
-            // 
-            this.checkBoxWalkthrough.AutoSize = true;
-            this.checkBoxWalkthrough.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxWalkthrough.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.checkBoxWalkthrough.Location = new System.Drawing.Point(9, 280);
-            this.checkBoxWalkthrough.Name = "checkBox1";
-            this.checkBoxWalkthrough.Size = new System.Drawing.Size(174, 32);
-            this.checkBoxWalkthrough.TabIndex = 12;
-            this.checkBoxWalkthrough.Text = "Walkthrough";
-            this.checkBoxWalkthrough.UseVisualStyleBackColor = true;
-            this.checkBoxWalkthrough.CheckedChanged += new System.EventHandler(this.checkBoxWalkthrough_CheckedChanged);
-            // 
-            // numericUpDownWalkthroughCounter
-            // 
-            this.numericUpDownWalkthroughCounter.Location = new System.Drawing.Point(224, 280);
-            this.numericUpDownWalkthroughCounter.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDownWalkthroughCounter.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownWalkthroughCounter.Name = "numericUpDownWalkthroughCounter";
-            this.numericUpDownWalkthroughCounter.Size = new System.Drawing.Size(58, 35);
-            this.numericUpDownWalkthroughCounter.TabIndex = 13;
-            this.numericUpDownWalkthroughCounter.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // KeyboardTrainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 27F);
@@ -245,7 +245,7 @@
             this.Text = "Keyboard trainer";
             this.PanelWithAllComponents.ResumeLayout(false);
             this.PanelWithAllComponents.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWalkthroughCounter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWalkthroughLinesNumber)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -263,7 +263,7 @@
         private System.Windows.Forms.Panel PanelWithAllComponents;
         private System.Windows.Forms.CheckBox checkBoxHardcoreMode;
         private System.Windows.Forms.Button adminButton;
-        private System.Windows.Forms.NumericUpDown numericUpDownWalkthroughCounter;
+        private System.Windows.Forms.NumericUpDown numericUpDownWalkthroughLinesNumber;
         private System.Windows.Forms.CheckBox checkBoxWalkthrough;
     }
 }

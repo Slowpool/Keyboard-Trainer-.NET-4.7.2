@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace Keyboard_Trainer
 {
@@ -47,9 +46,9 @@ namespace Keyboard_Trainer
 
         private void FillLanguages()
         {
-            foreach(Languages language in Enum.GetValues(typeof(Languages)))
+            foreach (Languages language in Enum.GetValues(typeof(Languages)))
             {
-                foreach(var kindOfData in KindsOfData.Values)
+                foreach (var kindOfData in KindsOfData.Values)
                 {
                     kindOfData[language] = 0;
                 }
@@ -64,7 +63,7 @@ namespace Keyboard_Trainer
             }
         }
 
-        private void CountRows(string kindOfData, Dictionary<Languages,int> dict)
+        private void CountRows(string kindOfData, Dictionary<Languages, int> dict)
         {
             foreach (var language in dict.Keys.ToList())
             {
@@ -86,6 +85,7 @@ namespace Keyboard_Trainer
             {
                 ErrorsDisplayer.ShowError(caption: "Failed to count rows amount in db",
                                          text: "The command wasn't executed");
+                throw new Exception();
             }
             finally
             {
@@ -140,7 +140,7 @@ namespace Keyboard_Trainer
 
         internal void Delete(string table_name)
         {
-//#error there's error somewhere here
+            //#error there's error somewhere here
             string command = string.Format(deleteFromPattern, table_name);
             TryExecuteAndDisplayInCaseOfError(command, "Deleting error");
             ResetAutoIncrement(table_name);

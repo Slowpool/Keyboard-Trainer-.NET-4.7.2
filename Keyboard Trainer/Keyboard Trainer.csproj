@@ -138,6 +138,7 @@
     <Compile Include="TypesOfData.cs" />
     <Compile Include="TypesOfParsingData.cs" />
     <Compile Include="Walkthrough.cs" />
+    <Compile Include="WalkthroughCases.cs" />
     <EmbeddedResource Include="AdminMenu.resx">
       <DependentUpon>AdminMenu.cs</DependentUpon>
     </EmbeddedResource>
