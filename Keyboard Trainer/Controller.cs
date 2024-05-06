@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Keyboard_Trainer
 {
@@ -97,12 +98,25 @@ namespace Keyboard_Trainer
             SetUsualState();
             if (IsCompletedLine(@string))
             {
-# warning i didn't finish it
                 if (walkthrough.Enabled)
                 {
-                    walkthrough.PlusLine();
+                    switch (walkthrough.PlusLine())
+                    {
+                        case WalkthroughCases.NextLine:
+                            RefreshLines();
+                            break;
+                        case WalkthroughCases.NextMode:
+                            break;
+                        case WalkthroughCases.End:
+                            walkthrough.Enabled = false;
+                            MessageBox.Show(caption: "Walkthrough finished", text: "apparently that's all");
+                            break;
+                    }
                 }
-                RefreshLines();
+                else
+                {
+                    RefreshLines();
+                }
             }
         }
 

@@ -157,6 +157,7 @@ namespace Keyboard_Trainer
                 }
                 else
                 {
+#error something wrong here
                     throw new Exception("incorrect type of data");
                 }
 

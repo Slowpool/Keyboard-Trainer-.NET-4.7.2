@@ -52,7 +52,7 @@ namespace Keyboard_Trainer
             set
             {
                 currentModeIndex = value;
-                if (ModesForWalkthrough.Count == currentModeIndex)
+                if (ModesForWalkthrough.Count - 1 == currentModeIndex)
                 {
                     LastResult = WalkthroughCases.End;
                     Reset();
@@ -60,18 +60,18 @@ namespace Keyboard_Trainer
                 else
                 {
                     LastResult = WalkthroughCases.NextMode;
+                    ModeComboBox.SelectedIndex = ModesForWalkthrough[CurrentModeIndex];
                 }
             }
         }
 
         internal int TargetNumberOfLines { get; set; }
 #warning hardcoding
-        private readonly List<int> ModesForWalkthrough = new List<int> { 0, 1,  3, 4,  6 };
+        private readonly List<int> ModesForWalkthrough = new List<int> { 0, 1,  3, 4,  6, 7 };
 
         public Walkthrough(ComboBox ModeComboBox)
         {
             this.ModeComboBox = ModeComboBox;
-            Reset();
         }
 
         internal void Reset()
@@ -82,9 +82,10 @@ namespace Keyboard_Trainer
 
         internal void Create(int targetNumberOfLines)
         {
-            Reset();
-            ModeComboBox.SelectedIndex = CurrentModeIndex;
+            Enabled = true;
             TargetNumberOfLines = targetNumberOfLines;
+            Reset();
+            ModeComboBox.SelectedIndex = ModesForWalkthrough[CurrentModeIndex];
         }
 
         internal WalkthroughCases PlusLine()
