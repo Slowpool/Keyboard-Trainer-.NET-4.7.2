@@ -16,7 +16,7 @@ namespace Keyboard_Trainer
 
         internal static bool IsCorrectTextLength(string text)
         {
-            if (string.IsNullOrEmpty(text))
+            if (string.IsNullOrWhiteSpace(text))
             {
                 return false;
             }
@@ -69,6 +69,10 @@ namespace Keyboard_Trainer
 
         internal static string PrepareText(string text, TypesOfData type)
         {
+            if (text.Length == 0)
+            {
+                return text;
+            }
             text = RemoveRedundantCharacters(text, type);
             text = Quote(text);
             return text;
@@ -140,7 +144,7 @@ namespace Keyboard_Trainer
 
         internal static string TruncateNextLines(string text)
         {
-            while (text[0] == '\n')
+            while (text.Length != 0 && text[0] == '\n')
             {
                 text = text.Substring(1);
             }

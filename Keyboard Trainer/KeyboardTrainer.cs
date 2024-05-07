@@ -77,7 +77,7 @@ namespace Keyboard_Trainer
             var typeLine = new TypeLine(TextBoxForTyping);
             var text = new Text(dataBase, MAX_LINE_LENGTH);
             var lineBuilder = new LineBuilder(dataBase, text, MAX_LINE_LENGTH);
-            var walkthrough = new Walkthrough(ModeComboBox);
+            var walkthrough = new Walkthrough(ModeComboBox, checkBoxWalkthrough);
             controller = new Controller(requiredLine, typeLine, lineBuilder, walkthrough);
         }
 
@@ -185,6 +185,7 @@ namespace Keyboard_Trainer
             {
                 controller.StopWalkthrough();
             }
+            TextBoxForTyping.Focus();
         }
     }
 }

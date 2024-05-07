@@ -16,12 +16,7 @@ namespace Keyboard_Trainer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            try
-            {
-                Application.Run(new KeyboardTrainer());
-            }
-            catch
-            { }
+            Application.Run(new KeyboardTrainer());
         }
     }
 }

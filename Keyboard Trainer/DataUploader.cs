@@ -157,15 +157,14 @@ namespace Keyboard_Trainer
                 }
                 else
                 {
-#error something wrong here
+//#error something wrong here
                     throw new Exception("incorrect type of data");
                 }
-
+                
                 text = TextForPringHandler.PrepareText(text, type);
 
                 if (TextForPringHandler.IsCorrectTextLength(text))
                 {
-
                     dataBase.InsertRow(text, table_name);
                 }
                 else

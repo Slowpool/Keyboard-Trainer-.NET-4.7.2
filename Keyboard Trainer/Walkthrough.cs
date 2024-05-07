@@ -9,7 +9,8 @@ namespace Keyboard_Trainer
 {
     internal class Walkthrough
     {
-        private readonly ComboBox ModeComboBox;
+        private readonly ComboBox modeComboBox;
+        private readonly CheckBox checkBox;
         private WalkthroughCases LastResult { get; set; }
 
         private bool enabled;
@@ -52,15 +53,15 @@ namespace Keyboard_Trainer
             set
             {
                 currentModeIndex = value;
-                if (ModesForWalkthrough.Count - 1 == currentModeIndex)
+                if (ModesForWalkthrough.Count == currentModeIndex)
                 {
                     LastResult = WalkthroughCases.End;
-                    Reset();
+                    checkBox.Checked = false;
                 }
                 else
                 {
                     LastResult = WalkthroughCases.NextMode;
-                    ModeComboBox.SelectedIndex = ModesForWalkthrough[CurrentModeIndex];
+                    modeComboBox.SelectedIndex = ModesForWalkthrough[CurrentModeIndex];
                 }
             }
         }
@@ -69,9 +70,10 @@ namespace Keyboard_Trainer
 #warning hardcoding
         private readonly List<int> ModesForWalkthrough = new List<int> { 0, 1,  3, 4,  6, 7 };
 
-        public Walkthrough(ComboBox ModeComboBox)
+        public Walkthrough(ComboBox modeComboBox, CheckBox checkBox)
         {
-            this.ModeComboBox = ModeComboBox;
+            this.modeComboBox = modeComboBox;
+            this.checkBox = checkBox;
         }
 
         internal void Reset()
@@ -85,7 +87,7 @@ namespace Keyboard_Trainer
             Enabled = true;
             TargetNumberOfLines = targetNumberOfLines;
             Reset();
-            ModeComboBox.SelectedIndex = ModesForWalkthrough[CurrentModeIndex];
+            modeComboBox.SelectedIndex = ModesForWalkthrough[CurrentModeIndex];
         }
 
         internal WalkthroughCases PlusLine()

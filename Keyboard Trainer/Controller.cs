@@ -109,7 +109,7 @@ namespace Keyboard_Trainer
                             break;
                         case WalkthroughCases.End:
                             walkthrough.Enabled = false;
-                            MessageBox.Show(caption: "Walkthrough finished", text: "apparently that's all");
+                            MessageBox.Show(caption: "Walkthrough finished", text: "Apparently that's all!");
                             break;
                     }
                 }
