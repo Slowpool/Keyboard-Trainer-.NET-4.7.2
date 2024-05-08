@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -114,7 +114,7 @@
     <Compile Include="CharacterChecker.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="DataBase.cs" />
-    <Compile Include="OneWordThreeTimes.cs" />
+    <Compile Include="MinimalSpeed.cs" />
     <Compile Include="TextForPringHandler.cs" />
     <Compile Include="DataUploader.cs" />
     <Compile Include="ErrorsDisplayer.cs" />

@@ -37,11 +37,15 @@
             this.RefreshButton = new System.Windows.Forms.Button();
             this.FullScreenButton = new System.Windows.Forms.Button();
             this.PanelWithAllComponents = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDownMinimumWordsPerMin = new System.Windows.Forms.NumericUpDown();
+            this.checkBoxMinimalSpeed = new System.Windows.Forms.CheckBox();
             this.numericUpDownWalkthroughLinesNumber = new System.Windows.Forms.NumericUpDown();
             this.checkBoxWalkthrough = new System.Windows.Forms.CheckBox();
             this.adminButton = new System.Windows.Forms.Button();
             this.checkBoxHardcoreMode = new System.Windows.Forms.CheckBox();
             this.PanelWithAllComponents.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinimumWordsPerMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWalkthroughLinesNumber)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,14 +79,13 @@
             this.ModeComboBox.ForeColor = System.Drawing.SystemColors.MenuText;
             this.ModeComboBox.FormattingEnabled = true;
             this.ModeComboBox.Items.AddRange(new object[] {
-            "word word word word word word word word word word word word",
-            "bought the leaving sweater to jumping through out leak and ciri you",
-            "word word word",
-            "\"Hello, dear diary!\" - said Amanda after working out. \"Nice!\"",
-            "54773 19387 374 75 387 293 5984 17493 0639 390892 103",
+            "word word word word word word word (repeating word)",
+            "bought through out leak and ciri you (random words)",
+            "\"Hello, dear diary!\" - said Amanda to John. (text)",
+            "54773 19387 374 75 387 293 5984 17493 (figures)",
             "Own text",
-            "& <~ [@/ -)! `(>@-:;; (.; <, \'{\'>}^/>}, ~<`!|@ {^,& #$% ?`\"/!-}(_@~-",
-            "You\'re burning and shining like a meteor"});
+            "& <~ [@/ -)! `(>@-:;; (.; <, \'{\'>}^/>}, ~ (characters)",
+            "You\'re burning and shining like a meteor (song)"});
             this.ModeComboBox.Location = new System.Drawing.Point(8, 376);
             this.ModeComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.ModeComboBox.Name = "ModeComboBox";
@@ -152,6 +155,9 @@
             // 
             // PanelWithAllComponents
             // 
+            this.PanelWithAllComponents.Controls.Add(this.label1);
+            this.PanelWithAllComponents.Controls.Add(this.numericUpDownMinimumWordsPerMin);
+            this.PanelWithAllComponents.Controls.Add(this.checkBoxMinimalSpeed);
             this.PanelWithAllComponents.Controls.Add(this.numericUpDownWalkthroughLinesNumber);
             this.PanelWithAllComponents.Controls.Add(this.checkBoxWalkthrough);
             this.PanelWithAllComponents.Controls.Add(this.adminButton);
@@ -168,6 +174,52 @@
             this.PanelWithAllComponents.Name = "PanelWithAllComponents";
             this.PanelWithAllComponents.Size = new System.Drawing.Size(1075, 503);
             this.PanelWithAllComponents.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Location = new System.Drawing.Point(871, 434);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(129, 32);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "words/min";
+            // 
+            // numericUpDownMinimumWordsPerMin
+            // 
+            this.numericUpDownMinimumWordsPerMin.Location = new System.Drawing.Point(817, 434);
+            this.numericUpDownMinimumWordsPerMin.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.numericUpDownMinimumWordsPerMin.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownMinimumWordsPerMin.Name = "numericUpDownMinimumWordsPerMin";
+            this.numericUpDownMinimumWordsPerMin.Size = new System.Drawing.Size(47, 35);
+            this.numericUpDownMinimumWordsPerMin.TabIndex = 15;
+            this.numericUpDownMinimumWordsPerMin.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // checkBoxMinimalSpeed
+            // 
+            this.checkBoxMinimalSpeed.AutoSize = true;
+            this.checkBoxMinimalSpeed.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxMinimalSpeed.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.checkBoxMinimalSpeed.Location = new System.Drawing.Point(517, 434);
+            this.checkBoxMinimalSpeed.Name = "checkBoxMinimalSpeed";
+            this.checkBoxMinimalSpeed.Size = new System.Drawing.Size(304, 32);
+            this.checkBoxMinimalSpeed.TabIndex = 14;
+            this.checkBoxMinimalSpeed.Text = "Minimal typing speed:";
+            this.checkBoxMinimalSpeed.UseVisualStyleBackColor = true;
+            this.checkBoxMinimalSpeed.CheckedChanged += new System.EventHandler(this.checkBoxMinimalSpeed_CheckedChanged);
             // 
             // numericUpDownWalkthroughLinesNumber
             // 
@@ -245,6 +297,7 @@
             this.Text = "Keyboard trainer";
             this.PanelWithAllComponents.ResumeLayout(false);
             this.PanelWithAllComponents.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinimumWordsPerMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWalkthroughLinesNumber)).EndInit();
             this.ResumeLayout(false);
 
@@ -265,6 +318,9 @@
         private System.Windows.Forms.Button adminButton;
         private System.Windows.Forms.NumericUpDown numericUpDownWalkthroughLinesNumber;
         private System.Windows.Forms.CheckBox checkBoxWalkthrough;
+        private System.Windows.Forms.CheckBox checkBoxMinimalSpeed;
+        private System.Windows.Forms.NumericUpDown numericUpDownMinimumWordsPerMin;
+        private System.Windows.Forms.Label label1;
     }
 }
 

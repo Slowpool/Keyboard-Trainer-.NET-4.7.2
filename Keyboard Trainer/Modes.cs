@@ -4,7 +4,6 @@
     {
         RepetitiveWord=0,
         SetOfWords,
-        OneWordThreeTimes,
         Text,
         Digits,
         OwnText,

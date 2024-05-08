@@ -10,6 +10,7 @@ namespace Keyboard_Trainer
         private DataBase dataBase;
         private FullScreen fullScreen;
         private AdminMenu adminMenu;
+        private MinimalSpeed minimalSpeed;
 
         private const int MAX_LINE_LENGTH = 80;
 
@@ -56,6 +57,7 @@ namespace Keyboard_Trainer
             fullScreen = new FullScreen(this);
             InitializeDataBase();
             adminMenu = new AdminMenu(dataBase);
+            minimalSpeed = new MinimalSpeed(TextBoxForTyping);
             InitializeControllerAndHisComponents();
         }
 
@@ -186,6 +188,20 @@ namespace Keyboard_Trainer
                 controller.StopWalkthrough();
             }
             TextBoxForTyping.Focus();
+        }
+
+        private void checkBoxMinimalSpeed_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxMinimalSpeed.Checked)
+            {
+                minimalSpeed.SetSpeed((int)numericUpDownMinimumWordsPerMin.Value);
+                TextBoxForTyping.KeyDown += minimalSpeed.HandleCharacter;
+            }
+            else
+            {
+#warning doesn't this line can yield exception when no such an event in handler?
+                TextBoxForTyping.KeyDown -= minimalSpeed.HandleCharacter;
+            }
         }
     }
 }

@@ -50,9 +50,6 @@ namespace Keyboard_Trainer
                 case Modes.Song:
                     text.UploadNewSong();
                     break;
-                case Modes.OneWordThreeTimes:
-                    RefreshWord();
-                    break;
             }
         }
 
@@ -84,11 +81,6 @@ namespace Keyboard_Trainer
 
                 case Modes.SetOfWords:
                     BuildSetOfWords();
-                    break;
-
-                    #warning i don't implement it
-                case Modes.OneWordThreeTimes:
-                    OneWordThreeTimesMode();
                     break;
 
                 case Modes.Text:
