@@ -20,10 +20,8 @@ namespace Keyboard_Trainer
             set
             {
                 enabled = value;
-                if (!enabled)
-                {
-                    Reset();
-                }
+                ResetCounters();
+                modeComboBox.SelectedIndex = ModesForWalkthrough[CurrentModeIndex];
             }
         }
 
@@ -56,6 +54,7 @@ namespace Keyboard_Trainer
                 if (ModesForWalkthrough.Count == currentModeIndex)
                 {
                     LastResult = WalkthroughCases.End;
+                    ResetCounters();
                     checkBox.Checked = false;
                 }
                 else
@@ -76,18 +75,16 @@ namespace Keyboard_Trainer
             this.checkBox = checkBox;
         }
 
-        internal void Reset()
+        internal void ResetCounters()
         {
-            LineCounter = 0;
-            CurrentModeIndex = 0;
+            lineCounter = 0;
+            currentModeIndex = 0;
         }
 
         internal void Create(int targetNumberOfLines)
         {
             Enabled = true;
             TargetNumberOfLines = targetNumberOfLines;
-            Reset();
-            modeComboBox.SelectedIndex = ModesForWalkthrough[CurrentModeIndex];
         }
 
         internal WalkthroughCases PlusLine()

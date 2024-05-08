@@ -108,8 +108,8 @@ namespace Keyboard_Trainer
                         case WalkthroughCases.NextMode:
                             break;
                         case WalkthroughCases.End:
-                            walkthrough.Enabled = false;
                             MessageBox.Show(caption: "Walkthrough finished", text: "Apparently that's all!");
+                            walkthrough.Enabled = false;
                             break;
                     }
                 }
