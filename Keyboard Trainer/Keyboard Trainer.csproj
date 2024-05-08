@@ -114,6 +114,7 @@
     <Compile Include="CharacterChecker.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="DataBase.cs" />
+    <Compile Include="OneWordThreeTimes.cs" />
     <Compile Include="TextForPringHandler.cs" />
     <Compile Include="DataUploader.cs" />
     <Compile Include="ErrorsDisplayer.cs" />

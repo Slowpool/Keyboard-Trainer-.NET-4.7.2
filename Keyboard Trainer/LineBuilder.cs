@@ -50,7 +50,6 @@ namespace Keyboard_Trainer
                 case Modes.Song:
                     text.UploadNewSong();
                     break;
-#warning it doesn't work i think
                 case Modes.OneWordThreeTimes:
                     RefreshWord();
                     break;
@@ -87,7 +86,7 @@ namespace Keyboard_Trainer
                     BuildSetOfWords();
                     break;
 
-                    #warning i didn't implement it
+                    #warning i don't implement it
                 case Modes.OneWordThreeTimes:
                     OneWordThreeTimesMode();
                     break;
@@ -149,16 +148,8 @@ namespace Keyboard_Trainer
 
         private void OneWordThreeTimesMode()
         {
-            if (CounterForThreeWordsMode == 3)
-            {
-                RefreshCondition();
-            }
-            else
-            {
-                CounterForThreeWordsMode++;
-            }
-            // TODO i didn't do it....
-            //DisplayNecessaryAmountOfWords();
+
+            BuiltLine = line.ToString();
         }
 
         private void RefreshCondition()

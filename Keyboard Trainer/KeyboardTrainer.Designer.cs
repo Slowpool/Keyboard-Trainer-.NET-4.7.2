@@ -64,7 +64,7 @@
             this.LabelOfOutputRequiringLine.Location = new System.Drawing.Point(4, 48);
             this.LabelOfOutputRequiringLine.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LabelOfOutputRequiringLine.Name = "LabelOfOutputRequiringLine";
-            this.LabelOfOutputRequiringLine.Size = new System.Drawing.Size(1065, 32);
+            this.LabelOfOutputRequiringLine.Size = new System.Drawing.Size(1065, 93);
             this.LabelOfOutputRequiringLine.TabIndex = 1;
             // 
             // ModeComboBox
