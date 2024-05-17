@@ -8,7 +8,7 @@ namespace Keyboard_Trainer
     internal class DataBase
     {
         private readonly MySqlConnection connection;
-        private readonly Random rnd;
+        private readonly Random rnd; // 
 #warning hardcoding
         private readonly Dictionary<Languages, int> WordsAmount;
         private readonly Dictionary<Languages, int> TextsAmount;
