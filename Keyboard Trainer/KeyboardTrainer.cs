@@ -42,6 +42,11 @@ namespace Keyboard_Trainer
             }
         }
 
+        private bool ShouldHideLanguages => Mode == Modes.OwnText
+                                         || Mode == Modes.Digits
+                                         || Mode == Modes.Characters
+                                         || Mode == Modes.RepeatingCharacters;
+
         internal KeyboardTrainer()
         {
             InitializeComponent();
@@ -109,7 +114,7 @@ namespace Keyboard_Trainer
         private void ModesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Mode = (Modes)ModeComboBox.SelectedIndex;
-            if(ShouldHideLanguages(Mode))
+            if(ShouldHideLanguages)
             {
                 DisplayLanguages = false;
             }
@@ -118,26 +123,6 @@ namespace Keyboard_Trainer
                 DisplayLanguages = true;
             }
             TextBoxForTyping.Focus();
-        }
-
-        private bool ShouldHideLanguages(Modes Mode)
-        {
-            if (Mode == Modes.OwnText)
-            {
-                return true;
-            }
-
-            if (Mode == Modes.Digits)
-            {
-                return true;
-            }
-
-            if (Mode == Modes.Characters)
-            {
-                return true;
-            }
-
-            return false;
         }
 
         private void LanguageComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -199,7 +184,6 @@ namespace Keyboard_Trainer
             }
             else
             {
-#warning doesn't this line can yield exception when no such an event in handler?
                 TextBoxForTyping.KeyDown -= minimalSpeed.HandleCharacter;
             }
         }

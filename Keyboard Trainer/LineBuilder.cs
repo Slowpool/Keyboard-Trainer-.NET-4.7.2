@@ -75,7 +75,7 @@ namespace Keyboard_Trainer
             line.Clear();
             switch(Mode)
             {
-                case Modes.RepetitiveWord:
+                case Modes.RepeatingWord:
                     BuildRepetitiveWord();
                     break;
 
@@ -96,7 +96,11 @@ namespace Keyboard_Trainer
                     break;
 
                 case Modes.Characters:
-                    BuildCharacters();
+                    BuildCharacters(false);
+                    break;
+
+                case Modes.RepeatingCharacters:
+                    BuildCharacters(true);
                     break;
 
                 case Modes.Song:
@@ -193,10 +197,25 @@ namespace Keyboard_Trainer
             TextMode();
         }
 
-        private void BuildCharacters()
-        {                                                         // -1 was added for space at the end
-            string characters = Generator.GenerateCharactersWithSpace(MaxLengthOfLine - 1);
-            characters = GuaranteeSpaceAtTheEnd(characters);
+        private void BuildCharacters(bool repeating)
+        {
+            string characters;
+            if (repeating)
+            {
+                string pseudoWord = Generator.GenerateCharactersWithSpace(rnd.Next(3, 11))
+                                             .Replace(" ", "") + " ";
+                characters = string.Empty;
+                while (characters.Length + pseudoWord.Length <= MaxLengthOfLine)
+                {
+                    characters += pseudoWord;
+                }
+            }
+            else
+            {
+                // 1 is deducted for space at the end
+                characters = Generator.GenerateCharactersWithSpace(MaxLengthOfLine - 1);
+                characters = GuaranteeSpaceAtTheEnd(characters);
+            }
             BuiltLine = characters;
         }
 

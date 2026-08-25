@@ -67,7 +67,8 @@ namespace Keyboard_Trainer
 
         internal int TargetNumberOfLines { get; set; }
 #warning hardcoding
-        private readonly List<int> ModesForWalkthrough = new List<int> { 0, 1, 2, 3, 5, 6 };
+        //private readonly List<int> ModesForWalkthrough = new List<int> { 0, 1, 2, 3, 5, 6, 7 };
+        private readonly List<int> ModesForWalkthrough = new List<int> { 3, 5, 6 }; // digits, chars and repeating chars
 
         public Walkthrough(ComboBox modeComboBox, CheckBox checkBox)
         {

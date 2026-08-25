@@ -8,7 +8,7 @@ namespace Keyboard_Trainer
     internal class DataBase
     {
         private readonly MySqlConnection connection;
-        private readonly Random rnd; // 
+        private readonly Random rnd;
 #warning hardcoding
         private readonly Dictionary<Languages, int> WordsAmount;
         private readonly Dictionary<Languages, int> TextsAmount;
@@ -73,6 +73,7 @@ namespace Keyboard_Trainer
 
         private int GetRowsAmount(string kindOfData, Languages language)
         {
+            return 0;
             string commandString = string.Format(CountRowsCommandPattern, language, kindOfData);
             Command = new MySqlCommand(commandString, connection);
             int rowsAmount = 0;
@@ -96,16 +97,19 @@ namespace Keyboard_Trainer
 
         internal string GetRandomWord(Languages language)
         {
+            return "random word";
             return GetRandomRow("word", language);
         }
 
         internal string GetRandomText(Languages language)
         {
+            return "random text";
             return GetRandomRow("text", language);
         }
 
         internal string GetRandomSong(Languages language)
         {
+            return "random song";
             return GetRandomRow("song", language);
         }
 
@@ -140,6 +144,7 @@ namespace Keyboard_Trainer
 
         internal void Delete(string table_name)
         {
+            return;
             //#error there's error somewhere here
             string command = string.Format(deleteFromPattern, table_name);
             TryExecuteAndDisplayInCaseOfError(command, "Deleting error");
@@ -148,6 +153,7 @@ namespace Keyboard_Trainer
 
         private void TryExecuteAndDisplayInCaseOfError(string command, string error)
         {
+            return;
             Command = new MySqlCommand(command, connection);
             try
             {
@@ -167,6 +173,7 @@ namespace Keyboard_Trainer
 
         internal void InsertRow(string text, string table_name)
         {
+            return;
             string command = string.Format(insertIntoPattern, table_name);
             command += string.Format(insertedValuePattern, text) + ";";
             TryExecuteAndDisplayInCaseOfError(command, "inserting error");
@@ -179,6 +186,7 @@ namespace Keyboard_Trainer
 
         private void ResetAutoIncrement(string table_name)
         {
+            return;
             string command = $"ALTER TABLE {table_name} AUTO_INCREMENT = 0;";
             TryExecuteAndDisplayInCaseOfError(command, "AUTO_INCREMENT property setting error");
         }

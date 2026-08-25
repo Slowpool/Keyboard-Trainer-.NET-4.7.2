@@ -85,6 +85,7 @@
             "54773 19387 374 75 387 293 5984 17493 (figures)",
             "Own text",
             "& <~ [@/ -)! `(>@-:;; (.; <, \'{\'>}^/>}, ~ (characters)",
+            ":/&[.+` :/&[.+` :/&[.+` :/&[.+` (repeating characters)",
             "You\'re burning and shining like a meteor (song)"});
             this.ModeComboBox.Location = new System.Drawing.Point(8, 376);
             this.ModeComboBox.Margin = new System.Windows.Forms.Padding(4);
@@ -307,7 +308,6 @@
 
         private System.Windows.Forms.TextBox TextBoxForTyping;
         private System.Windows.Forms.Label LabelOfOutputRequiringLine;
-        private System.Windows.Forms.ComboBox ModeComboBox;
         private System.Windows.Forms.Label ModeLabel;
         private System.Windows.Forms.ComboBox LanguageComboBox;
         private System.Windows.Forms.Label LanguageLabel;
@@ -321,6 +321,7 @@
         private System.Windows.Forms.CheckBox checkBoxMinimalSpeed;
         private System.Windows.Forms.NumericUpDown numericUpDownMinimumWordsPerMin;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox ModeComboBox;
     }
 }
 

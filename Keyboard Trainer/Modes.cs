@@ -2,12 +2,13 @@
 {
     public enum Modes
     {
-        RepetitiveWord=0,
+        RepeatingWord=0,
         SetOfWords,
         Text,
         Digits,
         OwnText,
         Characters,
+        RepeatingCharacters,
         Song,
     }
 }
