@@ -1,5 +1,7 @@
 One more app for training the typing on keyboard.
 
+<img width="1219" height="621" alt="image" src="https://github.com/user-attachments/assets/1c764253-431c-42a7-845a-37eaf79f88e7" />
+
 Modes:
   - `word word word word word (repeating word)` - for newbies who only starts
   - `bought through out leak and ciri you (random words)` - a bit more difficult than the previous mode
@@ -10,6 +12,10 @@ Modes:
   - `You\'re burning and shining like a meteor (song)` - personally i used it for typing of my own song translations, though that's the same as (text) mode
 
 Features:
+  - `language picking`
+  - `hardcore` - any mistake resets the whole current line progress
+  - `walkthrough` - traversing all modes (except `own text`) this way: completing of N specified lines in current mode will switch automatically to next mode. convenient for regular trainings. compatible with `hardcore` mode
+  - `minimal typing speed` - if you type slower, the whole line is reset. according to specified speed, app calculates the maximal interval between two characters and compares it with your intervals during typing
 
 How to setup:
 
