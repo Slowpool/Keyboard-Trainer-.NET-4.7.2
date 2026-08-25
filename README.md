@@ -14,8 +14,11 @@ Modes:
 Features:
   - `language picking`
   - `hardcore` - any mistake resets the whole current line progress
-  - `walkthrough` - traversing all modes (except `own text`) this way: completing of N specified lines in current mode will switch automatically to next mode. convenient for regular trainings. compatible with `hardcore` mode
+  - `walkthrough` - traversing all modes (except `own text`) this way: completing of N specified lines in current mode will switch automatically to next mode. convenient for regular trainings
   - `minimal typing speed` - if you type slower, the whole line is reset. according to specified speed, app calculates the maximal interval between two characters and compares it with your intervals during typing
+
+Hint:
+  - using the `walkthorugh` in combo with `hardcore` and `minimal typing speed` can turn you into a beast of keyboard
 
 How to setup:
   // TODO
