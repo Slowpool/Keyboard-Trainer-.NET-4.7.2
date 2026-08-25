@@ -18,5 +18,7 @@ Features:
   - `minimal typing speed` - if you type slower, the whole line is reset. according to specified speed, app calculates the maximal interval between two characters and compares it with your intervals during typing
 
 How to setup:
+  // TODO
 
-How to fulfill data:
+How to add new words/texts:
+  // TODO
